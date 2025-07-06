@@ -99,7 +99,7 @@ export const sendInquiry = async (req, res) => {
 					<p>Our sales team will review your inquiry and contact you shortly. In the meantime, you can:</p>
 					<ul>
 						<li>Call us directly at <strong>${process.env.DEALER_PHONE}</strong></li>
-						<li>Visit our showroom during business hours</li>
+						
 						<li>Browse more vehicles on our website</li>
 					</ul>
 				</div>
