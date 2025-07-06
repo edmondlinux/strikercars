@@ -19,8 +19,8 @@ const Navbar = () => {
 	return (
 		<header className='fixed top-0 left-0 w-full bg-gray-900 bg-opacity-95 backdrop-blur-md shadow-xl z-50 transition-all duration-300 border-b border-red-600'>
 			<div className='container mx-auto px-4 py-3'>
-				{/* Top bar with contact info - hidden on mobile */}
-				<div className='hidden lg:flex justify-between items-center text-sm text-gray-300 pb-2 border-b border-gray-700'>
+				{/* Top bar with contact info */}
+				<div className='hidden md:flex justify-between items-center text-sm text-gray-300 pb-2 border-b border-gray-700'>
 					<div className='flex items-center space-x-6'>
 						<div className='flex items-center space-x-2'>
 							<Phone size={14} />
@@ -48,7 +48,7 @@ const Navbar = () => {
 					</Link>
 
 					{/* Desktop Navigation */}
-					<nav className='hidden md:flex items-center gap-6'>
+					<nav className='hidden md:flex flex-wrap items-center gap-6'>
 						<Link
 							to="/"
 							className='text-gray-300 hover:text-red-400 transition duration-300 font-medium'
@@ -86,7 +86,7 @@ const Navbar = () => {
 								to="/admin-dashboard"
 							>
 								<Shield className='inline-block mr-2' size={18} />
-								<span className='hidden lg:inline'>Admin</span>
+								<span className='hidden sm:inline'>Admin</span>
 							</Link>
 						)}
 						{user ? (
@@ -96,7 +96,7 @@ const Navbar = () => {
 								onClick={logout}
 							>
 								<LogOut size={18} />
-								<span className='hidden lg:inline ml-2'>Log Out</span>
+								<span className='hidden sm:inline ml-2'>Log Out</span>
 							</button>
 						) : (
 							<Link
@@ -105,7 +105,7 @@ const Navbar = () => {
 								rounded-md flex items-center transition duration-300 ease-in-out'
 							>
 								<LogIn className='mr-2' size={18} />
-								<span className='hidden lg:inline'>Login</span>
+								Login
 							</Link>
 						)}
 					</nav>
@@ -125,21 +125,6 @@ const Navbar = () => {
 					isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
 				} overflow-hidden`}>
 					<nav className='flex flex-col space-y-4 pt-4 pb-2 border-t border-gray-700 mt-3'>
-						{/* Contact info for mobile */}
-						<div className='lg:hidden flex flex-col space-y-2 text-sm text-gray-300 pb-3 border-b border-gray-700'>
-							<div className='flex items-center space-x-2'>
-								<Phone size={14} />
-								<span>(555) 123-4567</span>
-							</div>
-							<div className='flex items-center space-x-2'>
-								<MapPin size={14} />
-								<span>123 Auto Street, Car City, CC 12345</span>
-							</div>
-							<div className='text-red-400 font-medium'>
-								Open Mon-Sat 9AM-8PM, Sun 11AM-6PM
-							</div>
-						</div>
-
 						<Link
 							to="/"
 							className='text-gray-300 hover:text-red-400 transition duration-300 font-medium py-2'
@@ -177,19 +162,19 @@ const Navbar = () => {
 						</Link>
 						{isAdmin && (
 							<Link
-								className='bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-md font-medium
-								 transition duration-300 ease-in-out flex items-center w-fit'
+								className='bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md font-medium
+								 transition duration-300 ease-in-out flex items-center'
 								to="/admin-dashboard"
 								onClick={closeMenu}
 							>
 								<Shield className='inline-block mr-2' size={18} />
-								Dashboard
+								<span>Admin</span>
 							</Link>
 						)}
 						{user ? (
 							<button
-								className='bg-gray-700 hover:bg-gray-600 text-white py-3 px-4 
-								rounded-md flex items-center transition duration-300 ease-in-out w-fit'
+								className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 
+								rounded-md flex items-center transition duration-300 ease-in-out'
 								onClick={() => {
 									logout();
 									closeMenu();
@@ -201,8 +186,8 @@ const Navbar = () => {
 						) : (
 							<Link
 								to="/login"
-								className='bg-red-600 hover:bg-red-700 text-white py-3 px-4 
-								rounded-md flex items-center transition duration-300 ease-in-out w-fit'
+								className='bg-red-600 hover:bg-red-700 text-white py-2 px-4 
+								rounded-md flex items-center transition duration-300 ease-in-out'
 								onClick={closeMenu}
 							>
 								<LogIn className='mr-2' size={18} />
