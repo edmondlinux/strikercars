@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Star, Award, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import FeaturedProducts from "./FeaturedProducts";
 
 const HeroSection = () => {
 	return (
@@ -70,30 +71,8 @@ const HeroSection = () => {
 							</div>
 						</div>
 					</motion.div>
-
-					<motion.div
-						initial={{ opacity: 0, x: 50 }}
-						animate={{ opacity: 1, x: 0 }}
-						transition={{ duration: 0.8, delay: 0.2 }}
-						className='relative'
-					>
-						<div className='relative z-10 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700'>
-							<img
-								src='https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
-								alt='Featured Car'
-								className='w-full h-64 object-cover rounded-lg'
-							/>
-							<div className='mt-6'>
-								<h3 className='text-2xl font-bold text-white'>2020 Honda Civic</h3>
-								<p className='text-gray-300 mt-2'>Low mileage, excellent condition</p>
-								<div className='flex justify-between items-center mt-4'>
-									<span className='text-3xl font-bold text-red-500'>$15,999</span>
-									<span className='bg-green-600 text-white px-3 py-1 rounded-full text-sm'>Available</span>
-								</div>
-							</div>
-						</div>
-						<div className='absolute -top-4 -right-4 w-72 h-72 bg-red-500 rounded-full opacity-20 blur-3xl'></div>
-					</motion.div>
+        <FeaturedProducts />
+					
 				</div>
 			</div>
 		</section>
