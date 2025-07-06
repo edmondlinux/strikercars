@@ -75,6 +75,12 @@ export const useProductStore = create((set) => ({
 		}
 	},
 	fetchFeaturedProducts: async () => {
+		// Check if we already have cached products to avoid unnecessary API calls
+		const currentState = useProductStore.getState();
+		if (currentState.products.length > 0 && !currentState.loading) {
+			return; // Already have data, no need to fetch again
+		}
+
 		set({ loading: true });
 		try {
 			const response = await axios.get("/products/featured");
@@ -91,7 +97,42 @@ export const useProductStore = create((set) => ({
 				set({ products: limitedProducts, loading: false });
 			} catch (fallbackError) {
 				console.log("Error fetching fallback products:", fallbackError);
-				set({ products: [], loading: false });
+				// Set mock data for demo purposes when API is unavailable
+				const mockProducts = [
+					{
+						_id: 'mock-1',
+						name: 'Luxury Sedan',
+						description: 'Premium comfort and performance',
+						price: 45000,
+						image: '/bags.jpg',
+						category: 'sedan'
+					},
+					{
+						_id: 'mock-2',
+						name: 'Sports Car',
+						description: 'High-performance vehicle',
+						price: 65000,
+						image: '/shoes.jpg',
+						category: 'sports'
+					},
+					{
+						_id: 'mock-3',
+						name: 'Family SUV',
+						description: 'Spacious and reliable',
+						price: 35000,
+						image: '/jackets.jpg',
+						category: 'suv'
+					},
+					{
+						_id: 'mock-4',
+						name: 'Electric Vehicle',
+						description: 'Eco-friendly transportation',
+						price: 55000,
+						image: '/tshirts.jpg',
+						category: 'electric'
+					}
+				];
+				set({ products: mockProducts, loading: false });
 			}
 		}
 	},

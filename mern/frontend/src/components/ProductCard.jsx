@@ -1,12 +1,11 @@
-
 import toast from "react-hot-toast";
 import { Heart, Eye, Calendar, Gauge } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 
-const CarCard = ({ product }) => {
+const CarCard = memo(({ product }) => {
 	// Early return if product is undefined or null
 	if (!product || !product._id) {
 		return null;
@@ -15,7 +14,7 @@ const CarCard = ({ product }) => {
 	const { user } = useUserStore();
 	const navigate = useNavigate();
 	const { addToFavorites, removeFromFavorites, isFavorite, getFavorites } = useFavoriteStore();
-	
+
 	const isLiked = isFavorite(product._id);
 
 	useEffect(() => {
@@ -37,7 +36,7 @@ const CarCard = ({ product }) => {
 			toast.error("Please login to add favorites", { id: "login" });
 			return;
 		}
-		
+
 		if (isLiked) {
 			removeFromFavorites(product._id);
 		} else {
@@ -54,7 +53,7 @@ const CarCard = ({ product }) => {
 			<div className='relative mx-4 mt-4 flex h-60 overflow-hidden rounded-xl'>
 				<img className='object-cover w-full h-full' src={product.image} alt={product.name} />
 				<div className='absolute inset-0 bg-black bg-opacity-20' />
-				
+
 				{/* Action buttons */}
 				<div className='absolute top-3 right-3 flex flex-col space-y-2'>
 					<button
@@ -80,7 +79,7 @@ const CarCard = ({ product }) => {
 
 			<div className='mt-4 px-5 pb-5 flex-1 flex flex-col'>
 				<h5 className='text-xl font-bold tracking-tight text-white mb-2'>{product.name}</h5>
-				
+
 				{/* Car details */}
 				<div className='flex items-center space-x-4 mb-4 text-gray-300'>
 					<div className='flex items-center space-x-1'>
@@ -122,8 +121,10 @@ const CarCard = ({ product }) => {
 					</div>
 				</div>
 			</div>
-		
+
 	);
-};
+});
+
+CarCard.displayName = 'CarCard';
 
 export default CarCard;

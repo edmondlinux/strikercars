@@ -1,9 +1,35 @@
 
 import { motion } from "framer-motion";
+import { memo } from "react";
 import ProductCard from "./ProductCard";
 import ProductListItem from "./ProductListItem";
 
-const ProductGrid = ({ products, viewMode = "grid" }) => {
+// Skeleton loading component
+const ProductSkeleton = () => (
+	<div className="animate-pulse">
+		<div className="bg-gray-700 h-48 rounded-lg mb-4"></div>
+		<div className="h-4 bg-gray-700 rounded mb-2"></div>
+		<div className="h-4 bg-gray-700 rounded w-3/4"></div>
+	</div>
+);
+
+const ProductGrid = memo(({ products, viewMode = "grid", loading = false }) => {
+	// Show skeleton loading
+	if (loading) {
+		return (
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.3 }}
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+			>
+				{[...Array(8)].map((_, index) => (
+					<ProductSkeleton key={index} />
+				))}
+			</motion.div>
+		);
+	}
+
 	if (!products || products.length === 0) {
 		return (
 			<motion.div
@@ -59,6 +85,8 @@ const ProductGrid = ({ products, viewMode = "grid" }) => {
 			))}
 		</motion.div>
 	);
-};
+});
+
+ProductGrid.displayName = 'ProductGrid';
 
 export default ProductGrid;

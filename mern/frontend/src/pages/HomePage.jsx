@@ -13,7 +13,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		fetchFeaturedProducts();
-	}, [fetchFeaturedProducts]);
+	}, []); // Remove dependency to avoid unnecessary re-renders
 	return (
 		<div className='relative min-h-screen text-white overflow-hidden bg-gray-900'>
 			{/* Background gradient */}
@@ -39,13 +39,7 @@ const HomePage = () => {
 						</p>
 					</div>
 
-					{loading ? (
-						<div className="flex justify-center items-center py-16">
-							<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500"></div>
-						</div>
-					) : (
-						<ProductGrid products={products} viewMode="grid" />
-					)}
+					<ProductGrid products={products} viewMode="grid" loading={loading} />
 				</section>
 			
 				<CarCategories />
