@@ -41,10 +41,11 @@ const Footer = () => {
 					<div>
 						<h3 className='text-lg font-semibold text-white mb-6'>Quick Links</h3>
 						<ul className='space-y-4'>
-							<li><Link to="/shop" className='text-gray-400 hover:text-red-500 transition-colors'>Browse Shop</Link></li>
-							<li><Link to="/payments" className='text-gray-400 hover:text-red-500 transition-colors'>Bitcoin Payments</Link></li>
+							<li><Link to="/inventory" className='text-gray-400 hover:text-red-500 transition-colors'>Browse Inventory</Link></li>
+							<li><Link to="/financing" className='text-gray-400 hover:text-red-500 transition-colors'>Financing Options</Link></li>
 							<li><Link to="/trade-in" className='text-gray-400 hover:text-red-500 transition-colors'>Trade-In Value</Link></li>
 							<li><Link to="/warranty" className='text-gray-400 hover:text-red-500 transition-colors'>Extended Warranty</Link></li>
+							<li><Link to="/about" className='text-gray-400 hover:text-red-500 transition-colors'>About Us</Link></li>
 							<li><Link to="/testimonials" className='text-gray-400 hover:text-red-500 transition-colors'>Customer Reviews</Link></li>
 						</ul>
 					</div>
@@ -53,8 +54,8 @@ const Footer = () => {
 					<div>
 						<h3 className='text-lg font-semibold text-white mb-6'>Our Services</h3>
 						<ul className='space-y-4'>
-							<li><span className='text-gray-400'>Bitcoin Payments</span></li>
 							<li><span className='text-gray-400'>No Title Financing</span></li>
+							<li><span className='text-gray-400'>Bad Credit Solutions</span></li>
 							<li><span className='text-gray-400'>Quick Approval</span></li>
 							<li><span className='text-gray-400'>Vehicle Inspection</span></li>
 							<li><span className='text-gray-400'>Service Partnerships</span></li>

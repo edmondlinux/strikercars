@@ -52,8 +52,6 @@ function App() {
 						<Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
 						<Route path='/admin-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to='/login' />} />
 						<Route path='/category/:category' element={<CategoryPage />} />
-						<Route path='/shop' element={<CategoryPage />} />
-						<Route path='/payments' element={<div className="min-h-screen flex items-center justify-center pt-20"><div className="text-center"><h1 className="text-3xl font-bold text-white mb-4">Bitcoin Payments</h1><p className="text-gray-300">Secure cryptocurrency payment options coming soon.</p></div></div>} />
 						<Route path='/cart' element={user ? <CartPage /> : <Navigate to='/login' />} />
 						<Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to='/login' />} />
 						<Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} />
