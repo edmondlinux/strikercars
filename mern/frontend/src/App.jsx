@@ -21,8 +21,6 @@ import CartPage from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
 import { useCartStore } from "./stores/useCartStore";
 
-import PurchaseCancelPage from "./pages/PurchaseCancelPage";
-
 function App() {
 	const { user, checkAuth, checkingAuth } = useUserStore();
 	const { getCartItems } = useCartStore();
