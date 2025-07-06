@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useCategoryStore } from "../../store/categoryStore";
+import { useCategoryStore } from "../store/categoryStore";
 import { useEffect } from "react";
 
 const CarCategories = () => {
