@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Star, Award, Users } from "lucide-react";
 import { Link } from "react-router-dom";
-import FeaturedProducts from "./FeaturedProducts";
 
 const HeroSection = () => {
 	return (
@@ -71,7 +70,7 @@ const HeroSection = () => {
 							</div>
 						</div>
 					</motion.div>
-        <FeaturedProducts />
+
 					
 				</div>
 			</div>
