@@ -1,19 +1,11 @@
-
 import { motion } from "framer-motion";
-import { ArrowRight, Heart, Eye, Calendar, Gauge, ShoppingCart } from "lucide-react";
+import { ArrowRight, Calendar, Gauge } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useCartStore } from "../stores/useCartStore";
-import { useFavoriteStore } from "../stores/useFavoriteStore";
-import { useUserStore } from "../stores/useUserStore";
-import toast from "react-hot-toast";
 
 const FeaturedCars = () => {
 	const navigate = useNavigate();
-	const { addToCart } = useCartStore();
-	const { addToFavorites, removeFromFavorites, isFavorite } = useFavoriteStore();
-	const { user } = useUserStore();
 
-	// Static featured cars data with realistic product structure
+	// Static featured cars data for display only
 	const featuredCars = [
 		{
 			_id: "featured-car-honda-civic-2020",
@@ -62,41 +54,8 @@ const FeaturedCars = () => {
 		}
 	];
 
-	const handleToggleFavorite = (car) => {
-		if (!user) {
-			toast.error("Please login to add favorites", { id: "login" });
-			return;
-		}
-
-		const isLiked = isFavorite(car._id);
-		if (isLiked) {
-			removeFromFavorites(car._id);
-			toast.success("Removed from favorites");
-		} else {
-			addToFavorites(car._id);
-			toast.success("Added to favorites");
-		}
-	};
-
-	const handleAddToCart = (car) => {
-		if (!user) {
-			toast.error("Please login to add to cart", { id: "login" });
-			return;
-		}
-		addToCart(car);
-		toast.success("Added to cart!");
-	};
-
-	const handleViewDetails = (carId) => {
-		navigate(`/product/${carId}`);
-	};
-
-	const handleContactDealer = (carName) => {
-		if (!user) {
-			toast.error("Please login to contact dealer", { id: "login" });
-			return;
-		}
-		toast.success(`Dealer contacted about ${carName}. They will reach out soon!`);
+	const handleViewInventory = () => {
+		navigate('/inventory');
 	};
 
 	return (
@@ -113,115 +72,83 @@ const FeaturedCars = () => {
 						Featured <span className='text-red-500'>Vehicles</span>
 					</h2>
 					<p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-						Handpicked quality vehicles with the best value. These premium cars won't last long!
+						Handpicked quality vehicles with the best value. Browse our full inventory to explore more options!
 					</p>
 				</motion.div>
 
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{featuredCars.map((car, index) => {
-						const isLiked = isFavorite(car._id);
-						
-						return (
-							<motion.div
-								key={car._id}
-								initial={{ opacity: 0, y: 30 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.6, delay: index * 0.2 }}
-								viewport={{ once: true }}
-								className='bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1'
-							>
-								<div className='relative h-60 overflow-hidden'>
-									<img 
-										className='object-cover w-full h-full cursor-pointer' 
-										src={car.image} 
-										alt={car.name}
-										onClick={() => handleViewDetails(car._id)}
-									/>
-									<div className='absolute inset-0 bg-black bg-opacity-20' />
-									
-									{/* Action buttons */}
-									<div className='absolute top-3 right-3 flex flex-col space-y-2'>
-										<button 
-											onClick={() => handleToggleFavorite(car)}
-											className={`p-2 rounded-full transition-all duration-300 ${
-												isLiked ? 'bg-red-500 text-white' : 'bg-white/20 text-white hover:bg-red-500'
-											}`}
-										>
-											<Heart size={18} fill={isLiked ? 'white' : 'none'} />
-										</button>
-										<button 
-											onClick={() => handleViewDetails(car._id)}
-											className='p-2 rounded-full bg-white/20 text-white hover:bg-gray-700 transition-all duration-300'
-										>
-											<Eye size={18} />
-										</button>
-									</div>
+					{featuredCars.map((car, index) => (
+						<motion.div
+							key={car._id}
+							initial={{ opacity: 0, y: 30 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.6, delay: index * 0.2 }}
+							viewport={{ once: true }}
+							className='bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer'
+							onClick={handleViewInventory}
+						>
+							<div className='relative h-60 overflow-hidden'>
+								<img 
+									className='object-cover w-full h-full' 
+									src={car.image} 
+									alt={car.name}
+								/>
+								<div className='absolute inset-0 bg-black bg-opacity-20' />
 
-									{/* Featured badge */}
-									<div className='absolute top-3 left-3'>
-										<span className='bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium'>
-											Featured
-										</span>
+								{/* Featured badge */}
+								<div className='absolute top-3 left-3'>
+									<span className='bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium'>
+										Featured
+									</span>
+								</div>
+
+								{/* Hover overlay */}
+								<div className='absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>
+									<span className='text-white text-lg font-semibold'>Click to View Inventory</span>
+								</div>
+							</div>
+
+							<div className='p-6'>
+								<h3 className='text-xl font-bold text-white mb-2 hover:text-red-400 transition-colors'>
+									{car.name}
+								</h3>
+
+								{/* Car details */}
+								<div className='flex items-center space-x-4 mb-4 text-gray-300'>
+									<div className='flex items-center space-x-1'>
+										<Calendar size={16} />
+										<span className='text-sm'>{car.year}</span>
+									</div>
+									<div className='flex items-center space-x-1'>
+										<Gauge size={16} />
+										<span className='text-sm'>{car.mileage} miles</span>
 									</div>
 								</div>
 
-								<div className='p-6'>
-									<h3 
-										className='text-xl font-bold text-white mb-2 cursor-pointer hover:text-red-400 transition-colors'
-										onClick={() => handleViewDetails(car._id)}
-									>
-										{car.name}
-									</h3>
-									
-									{/* Car details */}
-									<div className='flex items-center space-x-4 mb-4 text-gray-300'>
-										<div className='flex items-center space-x-1'>
-											<Calendar size={16} />
-											<span className='text-sm'>{car.year}</span>
-										</div>
-										<div className='flex items-center space-x-1'>
-											<Gauge size={16} />
-											<span className='text-sm'>{car.mileage} miles</span>
-										</div>
+								<p className='text-gray-400 text-sm mb-4 line-clamp-3'>
+									{car.description}
+								</p>
+
+								<div className='flex items-center justify-between mb-4'>
+									<div>
+										<p className='text-2xl font-bold text-red-500'>${car.price.toLocaleString()}</p>
+										<p className='text-sm text-gray-400'>Starting from</p>
 									</div>
-
-									<p className='text-gray-400 text-sm mb-4 line-clamp-3'>
-										{car.description}
-									</p>
-
-									<div className='flex items-center justify-between mb-4'>
-										<div>
-											<p className='text-2xl font-bold text-red-500'>${car.price.toLocaleString()}</p>
-											<p className='text-sm text-gray-400'>or $299/month</p>
-										</div>
-									</div>
-
-									<div className='flex space-x-2 mb-3'>
-										<button
-											onClick={() => handleContactDealer(car.name)}
-											className='flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300'
-										>
-											Contact Dealer
-										</button>
-										<button 
-											onClick={() => handleViewDetails(car._id)}
-											className='px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-300'
-										>
-											View Details
-										</button>
-									</div>
-
-									<button
-										onClick={() => handleAddToCart(car)}
-										className='w-full flex items-center justify-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300'
-									>
-										<ShoppingCart size={18} />
-										<span>Add to Cart</span>
-									</button>
 								</div>
-							</motion.div>
-						);
-					})}
+
+								<button
+									onClick={(e) => {
+										e.stopPropagation();
+										handleViewInventory();
+									}}
+									className='w-full bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center space-x-2'
+								>
+									<span>View in Inventory</span>
+									<ArrowRight size={18} />
+								</button>
+							</div>
+						</motion.div>
+					))}
 				</div>
 
 				<motion.div
@@ -235,7 +162,7 @@ const FeaturedCars = () => {
 						to="/inventory"
 						className='inline-flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition duration-300 transform hover:scale-105'
 					>
-						<span>View All Inventory</span>
+						<span>Browse Full Inventory</span>
 						<ArrowRight size={20} />
 					</Link>
 				</motion.div>
