@@ -1,10 +1,10 @@
-import { ShoppingCart, Heart, MapPin, Phone, Mail, Calendar, Gauge, Fuel, Users, Car } from "lucide-react";
+import { ShoppingCart, Heart, MapPin, Phone, Mail, Calendar, Gauge, Fuel, Users, Car, ArrowLeft, Settings, Zap } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
 import { useCartStore } from "../stores/useCartStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
 import { useUserStore } from "../stores/useUserStore";
 import toast from "react-hot-toast";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import LoadingSpinner from "../components/LoadingSpinner";
