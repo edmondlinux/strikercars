@@ -183,7 +183,7 @@ const Navbar = () => {
 								onClick={closeMenu}
 							>
 								<Shield className='inline-block mr-2' size={18} />
-								Admin
+								Dashboard
 							</Link>
 						)}
 						{user ? (

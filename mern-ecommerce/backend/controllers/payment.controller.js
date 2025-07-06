@@ -141,3 +141,16 @@ async function createNewCoupon(userId) {
 
 	return newCoupon;
 }
+
+export const getUserOrders = async (req, res) => {
+	try {
+		const orders = await Order.find({ user: req.user._id })
+			.populate("products.product")
+			.sort({ createdAt: -1 });
+
+		res.json(orders);
+	} catch (error) {
+		console.error("Error fetching user orders:", error);
+		res.status(500).json({ message: "Internal server error" });
+	}
+};

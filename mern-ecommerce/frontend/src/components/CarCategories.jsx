@@ -1,47 +1,23 @@
-
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-const categories = [
-	{ 
-		name: "Sedans", 
-		imageUrl: "https://images.unsplash.com/photo-1549399973-58d9cd8ff0c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-		count: "45+ Available",
-		href: "/category/sedans"
-	},
-	{ 
-		name: "SUVs", 
-		imageUrl: "https://images.unsplash.com/photo-1566473965997-3de9c817e938?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-		count: "38+ Available",
-		href: "/category/suvs"
-	},
-	{ 
-		name: "Trucks", 
-		imageUrl: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-		count: "22+ Available",
-		href: "/category/trucks"
-	},
-	{ 
-		name: "Coupes", 
-		imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-		count: "15+ Available",
-		href: "/category/coupes"
-	},
-	{ 
-		name: "Convertibles", 
-		imageUrl: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-		count: "8+ Available",
-		href: "/category/convertibles"
-	},
-	{ 
-		name: "Luxury", 
-		imageUrl: "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-		count: "12+ Available",
-		href: "/category/luxury"
-	}
-];
+import { useCategoryStore } from "../../store/categoryStore";
+import { useEffect } from "react";
 
 const CarCategories = () => {
+	const { categories, fetchAllCategories, loading } = useCategoryStore();
+
+	useEffect(() => {
+		fetchAllCategories();
+	}, [fetchAllCategories]);
+
+	if (loading) {
+		return (
+			<div className="py-16 text-center">
+				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto"></div>
+			</div>
+		);
+	}
+
 	return (
 		<section className='py-20 px-4 sm:px-6 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
@@ -70,7 +46,7 @@ const CarCategories = () => {
 							viewport={{ once: true }}
 						>
 							<Link
-								to={category.href}
+								to={`/category/${category._id}`}
 								className='group block relative overflow-hidden rounded-2xl bg-gray-800 hover:transform hover:scale-105 transition-all duration-300'
 							>
 								<div className='aspect-w-16 aspect-h-12'>

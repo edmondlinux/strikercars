@@ -2,13 +2,22 @@
 import toast from "react-hot-toast";
 import { Heart, Eye, Calendar, Gauge } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
-import { useState } from "react";
+import { useFavoriteStore } from "../stores/useFavoriteStore";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const CarCard = ({ product }) => {
 	const { user } = useUserStore();
 	const navigate = useNavigate();
-	const [isLiked, setIsLiked] = useState(false);
+	const { addToFavorites, removeFromFavorites, isFavorite, getFavorites } = useFavoriteStore();
+	
+	const isLiked = isFavorite(product._id);
+
+	useEffect(() => {
+		if (user) {
+			getFavorites();
+		}
+	}, [user, getFavorites]);
 
 	const handleContactDealer = () => {
 		if (!user) {
@@ -19,8 +28,16 @@ const CarCard = ({ product }) => {
 	};
 
 	const handleToggleLike = () => {
-		setIsLiked(!isLiked);
-		toast.success(isLiked ? "Removed from favorites" : "Added to favorites");
+		if (!user) {
+			toast.error("Please login to add favorites", { id: "login" });
+			return;
+		}
+		
+		if (isLiked) {
+			removeFromFavorites(product._id);
+		} else {
+			addToFavorites(product._id);
+		}
 	};
 
 	const handleViewDetails = () => {
