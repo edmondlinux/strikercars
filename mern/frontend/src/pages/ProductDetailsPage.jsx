@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Heart, Calendar, Settings, Gauge, Users } from "lucide-react";
+import { ArrowLeft, Heart, Calendar, Settings, Gauge, Users, ShoppingCart, Fuel, Zap } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
+import { useCartStore } from "../stores/useCartStore";
+import { useUserStore } from "../stores/useUserStore";
+import toast from "react-hot-toast";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const ProductDetailsPage = () => {
@@ -13,14 +16,90 @@ const ProductDetailsPage = () => {
 	const [loading, setLoading] = useState(true);
 	const { products } = useProductStore();
 	const { addToFavorites } = useFavoriteStore();
+	const { addToCart } = useCartStore();
+	const { user } = useUserStore();
+
+	const handleAddToCart = () => {
+		if (!user) {
+			toast.error("Please login to add to cart", { id: "login" });
+			return;
+		}
+		addToCart(product);
+		toast.success("Added to cart!");
+	};
+
+	const handleAddToFavorites = () => {
+		if (!user) {
+			toast.error("Please login to add favorites", { id: "login" });
+			return;
+		}
+		addToFavorites(product);
+		toast.success("Added to favorites!");
+	};
 
 	useEffect(() => {
+		// First check in the regular products
 		const foundProduct = products.find(p => p._id === id);
 		if (foundProduct) {
 			setProduct(foundProduct);
 			setLoading(false);
+			return;
+		}
+
+		// Check if it's a featured car (static data)
+		const featuredCars = [
+			{
+				_id: "featured-car-honda-civic-2020",
+				name: "2020 Honda Civic LX",
+				description: "Reliable and fuel-efficient sedan perfect for daily commuting. Clean title, well-maintained with complete service history. Features include automatic transmission, power windows, air conditioning, and excellent safety ratings.",
+				price: 18500,
+				image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+				year: 2020,
+				mileage: "45,000",
+				category: "sedan",
+				engine: "1.5L 4-Cylinder",
+				seats: "5",
+				transmission: "CVT Automatic",
+				fuelType: "Gasoline",
+				mpg: "32 City / 42 Highway"
+			},
+			{
+				_id: "featured-car-ford-explorer-2019",
+				name: "2019 Ford Explorer XLT",
+				description: "Spacious SUV with 3-row seating perfect for families. Equipped with advanced safety features, entertainment system, and plenty of cargo space. One owner vehicle with excellent maintenance records.",
+				price: 24900,
+				image: "https://images.unsplash.com/photo-1566473965997-3de9c817e938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+				year: 2019,
+				mileage: "52,000",
+				category: "suv",
+				engine: "3.5L V6",
+				seats: "7",
+				transmission: "10-Speed Automatic",
+				fuelType: "Gasoline",
+				mpg: "20 City / 28 Highway"
+			},
+			{
+				_id: "featured-car-toyota-camry-2021",
+				name: "2021 Toyota Camry LE",
+				description: "Low mileage sedan with excellent fuel economy and Toyota's renowned reliability. Pristine interior and exterior condition with advanced safety features and modern infotainment system.",
+				price: 22750,
+				image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+				year: 2021,
+				mileage: "28,000",
+				category: "sedan",
+				engine: "2.5L 4-Cylinder",
+				seats: "5",
+				transmission: "8-Speed Automatic",
+				fuelType: "Gasoline",
+				mpg: "28 City / 39 Highway"
+			}
+		];
+
+		const featuredCar = featuredCars.find(car => car._id === id);
+		if (featuredCar) {
+			setProduct(featuredCar);
+			setLoading(false);
 		} else {
-			// If product not found in store, you could fetch it individually here
 			setLoading(false);
 		}
 	}, [id, products]);
@@ -107,7 +186,7 @@ const ProductDetailsPage = () => {
 									<span className='text-gray-300'>Mileage</span>
 								</div>
 								<span className='text-white font-semibold'>
-									{product.mileage || "N/A"}
+									{product.mileage || "N/A"} miles
 								</span>
 							</div>
 
@@ -130,23 +209,69 @@ const ProductDetailsPage = () => {
 									{product.seats || "5"}
 								</span>
 							</div>
+
+							{product.transmission && (
+								<div className='bg-gray-700 p-4 rounded-lg'>
+									<div className='flex items-center mb-2'>
+										<Settings className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Transmission</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.transmission}
+									</span>
+								</div>
+							)}
+
+							{product.fuelType && (
+								<div className='bg-gray-700 p-4 rounded-lg'>
+									<div className='flex items-center mb-2'>
+										<Fuel className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Fuel Type</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.fuelType}
+									</span>
+								</div>
+							)}
+
+							{product.mpg && (
+								<div className='bg-gray-700 p-4 rounded-lg col-span-2'>
+									<div className='flex items-center mb-2'>
+										<Zap className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Fuel Economy</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.mpg}
+									</span>
+								</div>
+							)}
 						</div>
 
 						{/* Action Buttons */}
-						<div className='flex space-x-4'>
-							<button
-								onClick={() => window.open('tel:(555)123-4567', '_self')}
-								className='flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300'
-							>
-								Call Now
-							</button>
+						<div className='space-y-4'>
+							<div className='flex space-x-4'>
+								<button
+									onClick={handleAddToCart}
+									className='flex-1 flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300'
+								>
+									<ShoppingCart size={20} />
+									<span>Add to Cart</span>
+								</button>
+
+								<button
+									onClick={handleAddToFavorites}
+									className='bg-gray-700 hover:bg-gray-600 text-white py-3 px-6 rounded-lg transition duration-300'
+									title="Add to Favorites"
+								>
+									<Heart size={20} />
+								</button>
+							</div>
 
 							<button
-								onClick={() => addToFavorites(product)}
-								className='bg-gray-700 hover:bg-gray-600 text-white py-3 px-6 rounded-lg transition duration-300'
-								title="Add to Favorites"
+								onClick={() => window.open('tel:(555)123-4567', '_self')}
+								className='w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300'
 							>
-								<Heart size={20} />
+								Contact Dealer: (555) 123-4567
 							</button>
 						</div>
 
