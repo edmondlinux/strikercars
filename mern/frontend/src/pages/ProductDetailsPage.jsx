@@ -1,14 +1,13 @@
-import { ShoppingCart, Heart, MapPin, Phone, Mail, Calendar, Gauge, Fuel, Users, Car } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowLeft, Heart, Calendar, Settings, Gauge, Users, ShoppingCart, Fuel, Zap, Phone } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
-import { useCartStore } from "../stores/useCartStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
+import { useCartStore } from "../stores/useCartStore";
 import { useUserStore } from "../stores/useUserStore";
 import toast from "react-hot-toast";
-import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import LoadingSpinner from "../components/LoadingSpinner";
-import SEOHead from "../components/SEOHead";
 
 
 const ProductDetailsPage = () => {
@@ -49,7 +48,7 @@ const ProductDetailsPage = () => {
 		window.open(`tel:${dealerPhone}`, '_self');
 	};
 
-
+	
 
 	useEffect(() => {
 		// First check in the regular products
@@ -119,26 +118,25 @@ const ProductDetailsPage = () => {
 	}, [id, products]);
 
 	if (loading) return <LoadingSpinner />;
-	if (!product) return <div className="text-white text-center py-20">Product not found</div>;
 
-	const productKeywords = `${product.name}, ${product.category}, used car, pre-owned vehicle, ${product.year || ''} ${product.make || ''} ${product.model || ''}, car for sale, automotive`;
-	const productDescription = `${product.name} - ${product.description.substring(0, 150)}... Available at Strikers No Title Cars for $${product.price.toLocaleString()}.`;
+	if (!product) {
+		return (
+			<div className='min-h-screen bg-gray-900 flex items-center justify-center'>
+				<div className='text-center'>
+					<h2 className='text-2xl font-bold text-white mb-4'>Car Not Found</h2>
+					<button
+						onClick={() => navigate('/inventory')}
+						className='bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition duration-300'
+					>
+						Browse Our Inventory
+					</button>
+				</div>
+			</div>
+		);
+	}
 
 	return (
-		<div className='min-h-screen bg-gray-900 py-8 md:py-16'>
-			<SEOHead 
-				title={`${product.name} - $${product.price.toLocaleString()} | Strikers No Title Cars`}
-				description={productDescription}
-				keywords={productKeywords}
-				image={product.image}
-				url={`/product/${product._id}`}
-				type="product"
-				price={product.price}
-				availability="https://schema.org/InStock"
-			/>
-
-			<div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'></div>
-
+		<div className='min-h-screen bg-gray-900 pt-20'>
 			<div className='container mx-auto px-4 py-8'>
 				<motion.button
 					onClick={() => navigate(-1)}

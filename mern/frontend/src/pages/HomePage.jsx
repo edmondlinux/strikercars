@@ -1,13 +1,10 @@
+
 import HeroSection from "../components/HeroSection";
-import CategoryItem from "../components/CategoryItem";
-import { useProductStore } from "../stores/useProductStore";
-import { useEffect } from "react";
+import CarCategories from "../components/CarCategories";
 import FeaturedCars from "../components/FeaturedCars";
-import { useCategoryStore } from "../stores/useCategoryStore";
-import CallToAction from "../components/CallToAction";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
-import SEOHead from "../components/SEOHead";
+import CallToAction from "../components/CallToAction";
 
 const HomePage = () => {
 	return (
@@ -20,13 +17,6 @@ const HomePage = () => {
 			</div>
 
 			<div className='relative z-10'>
-				<SEOHead 
-					title="Strikers No Title Cars - Quality Pre-Owned Vehicles"
-					description="Find quality pre-owned vehicles at Strikers No Title Cars. We specialize in helping customers with all credit situations find reliable transportation. Browse our inventory of cars, SUVs, and more."
-					keywords="used cars, pre-owned vehicles, no title cars, affordable cars, car dealership, auto sales, financing available"
-					url="/"
-					type="website"
-				/>
 				<HeroSection />
 				<CarCategories />
 				<FeaturedCars />
