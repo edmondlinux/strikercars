@@ -51,7 +51,7 @@ export const sendInquiry = async (req, res) => {
 
 		// Email to admin
 		const adminMailOptions = {
-			from: email,
+			from: `"${name}" <${email}>`,
 			to: process.env.ADMIN_EMAIL,
 			subject: `New Vehicle Inquiry - ${productName}`,
 			html: `
@@ -79,14 +79,14 @@ export const sendInquiry = async (req, res) => {
 						: ""
 				}
 				<p style="color: #666; font-size: 14px; margin-top: 30px;">
-					This inquiry was sent from your car dealership website.
+					This inquiry was sent from ${process.env.APP_NAME} website.
 				</p>
 			`,
 		};
 
 		// Email to customer
 		const customerMailOptions = {
-			from: process.env.ADMIN_EMAIL,
+			from: `"${process.env.APP_NAME}" <${process.env.ADMIN_EMAIL}>`,
 			to: email,
 			subject: `Thank you for your inquiry about ${productName}`,
 			html: `
@@ -113,7 +113,7 @@ export const sendInquiry = async (req, res) => {
 				</div>
 
 				<p>We look forward to helping you find your perfect vehicle!</p>
-				<p>Best regards,<br>Strikers Auto Team</p>
+				<p>Best regards,<br>${process.env.APP_NAME} Team</p>
 
 				<hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
 				<p style="color: #666; font-size: 12px;">
