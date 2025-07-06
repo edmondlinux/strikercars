@@ -82,14 +82,15 @@ export const useProductStore = create((set) => ({
 			set({ products: Array.isArray(featuredProducts) ? featuredProducts : [], loading: false });
 		} catch (error) {
 			console.log("Error fetching featured products:", error);
-			// Fallback to regular products if featured products fail
+			// If featured products fail, try to get all products (for public access)
 			try {
 				const fallbackResponse = await axios.get("/products");
 				const allProducts = fallbackResponse.data.products || [];
-				set({ products: Array.isArray(allProducts) ? allProducts : [], loading: false });
+				// Take first 8 products as "featured" if no specific featured products
+				const limitedProducts = Array.isArray(allProducts) ? allProducts.slice(0, 8) : [];
+				set({ products: limitedProducts, loading: false });
 			} catch (fallbackError) {
 				console.log("Error fetching fallback products:", fallbackError);
-				// Set empty array instead of leaving products undefined
 				set({ products: [], loading: false });
 			}
 		}
