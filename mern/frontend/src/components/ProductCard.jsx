@@ -25,10 +25,6 @@ const CarCard = memo(({ product }) => {
 	}, [user, getFavorites]);
 
 	const handleContactDealer = () => {
-		if (!user) {
-			toast.error("Please login to contact dealer", { id: "login" });
-			return;
-		}
 		navigate(`/contact/${product._id}`);
 	};
 

@@ -40,10 +40,6 @@ const ProductDetailsPage = () => {
 	};
 
 	const handleContactDealer = () => {
-		if (!user) {
-			toast.error("Please login to contact dealer", { id: "login" });
-			return;
-		}
 		navigate(`/contact/${product._id}`);
 	};
 
