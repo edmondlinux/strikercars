@@ -5,7 +5,7 @@ const FeaturedCars = ({ featuredCars }) => {
 	const displayedCars = featuredCars?.slice(0, 3) || [];
 
 	return (
-		<section className='py-20 px-4 sm:px-6 lg:px-8 bg-gray-800/50'>
+		<section className='py-20 px-4 sm:px-6 lg:px-8 '>
 			<div className='max-w-7xl mx-auto'>
 				<motion.div
 					initial={{ opacity: 0, y: 30 }}
@@ -17,9 +17,7 @@ const FeaturedCars = ({ featuredCars }) => {
 					<h2 className='text-4xl lg:text-5xl font-bold text-white mb-4'>
 						Featured <span className='text-red-500'>Vehicles</span>
 					</h2>
-					<p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-						Hand-picked quality vehicles at unbeatable prices. Each car is thoroughly inspected and ready to drive.
-					</p>
+					
 				</motion.div>
 
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
