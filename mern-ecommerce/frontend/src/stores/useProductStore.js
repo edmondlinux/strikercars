@@ -5,6 +5,7 @@ import axios from "../lib/axios";
 export const useProductStore = create((set) => ({
 	products: [],
 	loading: false,
+	isLoading: false,
 
 	setProducts: (products) => set({ products }),
 	createProduct: async (productData) => {
@@ -21,13 +22,17 @@ export const useProductStore = create((set) => ({
 		}
 	},
 	fetchAllProducts: async () => {
-		set({ loading: true });
+		set({ loading: true, isLoading: true });
 		try {
 			const response = await axios.get("/products");
-			set({ products: response.data.products, loading: false });
+			set({ products: response.data.products, loading: false, isLoading: false });
 		} catch (error) {
-			set({ error: "Failed to fetch products", loading: false });
-			toast.error(error.response.data.error || "Failed to fetch products");
+			set({ products: [], loading: false, isLoading: false });
+			console.log("Error fetching products:", error);
+			// Only show toast if it's not a network/auth error
+			if (error.response?.status !== 401 && error.response?.status !== 500) {
+				toast.error(error.response?.data?.error || "Failed to fetch products");
+			}
 		}
 	},
 	fetchProductsByCategory: async (category) => {

@@ -8,7 +8,7 @@ import CategoryFilter from "../components/CategoryFilter";
 import ProductGrid from "../components/ProductGrid";
 
 const InventoryPage = () => {
-	const { fetchAllProducts, products, isLoading } = useProductStore();
+	const { fetchAllProducts, products, loading } = useProductStore();
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [sortBy, setSortBy] = useState("name");
@@ -44,7 +44,7 @@ const InventoryPage = () => {
 	// Get unique categories
 	const categories = ["all", ...new Set(products?.map(product => product.category) || [])];
 
-	if (isLoading) {
+	if (loading) {
 		return (
 			<div className="min-h-screen flex items-center justify-center">
 				<div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-500"></div>
