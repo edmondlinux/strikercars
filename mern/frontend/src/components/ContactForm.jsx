@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, Mail, Phone, User, MessageSquare } from "lucide-react";
 import toast from "react-hot-toast";
@@ -13,6 +13,20 @@ const ContactForm = ({ product, isOpen, onClose, onEmailSent }) => {
 		message: ""
 	});
 	const [loading, setLoading] = useState(false);
+
+	// Prevent background scrolling and interactions when modal is open
+	useEffect(() => {
+		if (isOpen) {
+			document.body.classList.add('modal-open');
+		} else {
+			document.body.classList.remove('modal-open');
+		}
+
+		// Cleanup function to restore normal behavior when component unmounts
+		return () => {
+			document.body.classList.remove('modal-open');
+		};
+	}, [isOpen]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -49,13 +63,21 @@ const ContactForm = ({ product, isOpen, onClose, onEmailSent }) => {
 	if (!isOpen) return null;
 
 	return (
-		<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+		<div 
+			className="modal-overlay flex items-center justify-center p-4"
+			onClick={(e) => e.stopPropagation()}
+		>
+			<div 
+				className="fixed inset-0" 
+				onClick={onClose}
+			></div>
 			<motion.div
-				className="bg-gray-800 rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto"
+				className="bg-gray-800 rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl border border-gray-700"
 				initial={{ opacity: 0, scale: 0.9 }}
 				animate={{ opacity: 1, scale: 1 }}
 				exit={{ opacity: 0, scale: 0.9 }}
-			>
+				onClick={(e) => e.stopPropagation()}
+			></motion.str>
 				<div className="flex justify-between items-center mb-6">
 					<h2 className="text-2xl font-bold text-white">Contact Dealer</h2>
 					<button
