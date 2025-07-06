@@ -45,10 +45,11 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 
-# Email configuration for contact inquiries
-ADMIN_EMAIL=your_admin_email@gmail.com
-ADMIN_EMAIL_PASSWORD=your_app_password
-DEALER_PHONE=+1234567890
+# SMTP Email Configuration for Contact Inquiries
+SMTP_EMAIL=your-business@gmail.com
+SMTP_APP_PASSWORD=your_16_character_app_password
+BUSINESS_EMAIL=your-business@gmail.com
+BUSINESS_PHONE=+1234567890
 ```
 
 ### Run this app locally
