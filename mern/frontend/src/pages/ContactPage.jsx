@@ -43,13 +43,20 @@ const ContactPage = () => {
 		e.preventDefault();
 		setLoading(true);
 
+		const requestData = {
+			...formData,
+			productId: product._id,
+			productName: product.name,
+			productPrice: product.price
+		};
+
+		console.log("=== CONTACT PAGE DEBUG ===");
+		console.log("Request URL:", axios.defaults.baseURL + "/contact/inquiry");
+		console.log("Request Data:", requestData);
+		console.log("Axios base URL:", axios.defaults.baseURL);
+
 		try {
-			const response = await axios.post("/api/contact/inquiry", {
-				...formData,
-				productId: product._id,
-				productName: product.name,
-				productPrice: product.price
-			});
+			const response = await axios.post("/contact/inquiry", requestData);
 
 			if (response.data.success) {
 				toast.success("Your inquiry has been sent successfully!");
@@ -60,6 +67,14 @@ const ContactPage = () => {
 				}, 2000);
 			}
 		} catch (error) {
+			console.error("=== CONTACT PAGE ERROR ===");
+			console.error("Error object:", error);
+			console.error("Error message:", error.message);
+			console.error("Error response:", error.response);
+			console.error("Error response data:", error.response?.data);
+			console.error("Error response status:", error.response?.status);
+			console.error("Error config:", error.config);
+			
 			toast.error(error.response?.data?.message || "Failed to send inquiry");
 		} finally {
 			setLoading(false);

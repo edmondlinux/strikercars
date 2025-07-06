@@ -32,13 +32,23 @@ const ContactForm = ({ product, isOpen, onClose, onEmailSent }) => {
 		e.preventDefault();
 		setLoading(true);
 
+		const requestData = {
+			...formData,
+			productId: product._id,
+			productName: product.name,
+			productPrice: product.price
+		};
+
+		console.log("=== CONTACT FORM DEBUG ===");
+		console.log("Request URL:", axios.defaults.baseURL + "/contact/inquiry");
+		console.log("Request Data:", requestData);
+		console.log("Axios base URL:", axios.defaults.baseURL);
+
 		try {
-			const response = await axios.post("/api/contact/inquiry", {
-				...formData,
-				productId: product._id,
-				productName: product.name,
-				productPrice: product.price
-			});
+			const response = await axios.post("/contact/inquiry", requestData);
+
+			console.log("Response received:", response);
+			console.log("Response data:", response.data);
 
 			if (response.data.success) {
 				toast.success("Your inquiry has been sent successfully!");
@@ -47,6 +57,14 @@ const ContactForm = ({ product, isOpen, onClose, onEmailSent }) => {
 				setFormData({ name: "", email: "", phone: "", message: "" });
 			}
 		} catch (error) {
+			console.error("=== CONTACT FORM ERROR ===");
+			console.error("Error object:", error);
+			console.error("Error message:", error.message);
+			console.error("Error response:", error.response);
+			console.error("Error response data:", error.response?.data);
+			console.error("Error response status:", error.response?.status);
+			console.error("Error config:", error.config);
+			
 			toast.error(error.response?.data?.message || "Failed to send inquiry");
 		} finally {
 			setLoading(false);

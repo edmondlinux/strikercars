@@ -13,11 +13,19 @@ const createTransporter = () => {
 };
 
 export const sendInquiry = async (req, res) => {
+	console.log("=== CONTACT CONTROLLER DEBUG ===");
+	console.log("Request received at /api/contact/inquiry");
+	console.log("Request body:", req.body);
+	console.log("Request headers:", req.headers);
+	
 	try {
 		const { name, email, phone, message, productId, productName, productPrice } = req.body;
 
+		console.log("Extracted data:", { name, email, phone, message, productId, productName, productPrice });
+
 		// Validate required fields
 		if (!name || !email || !phone || !productName) {
+			console.log("Validation failed - missing required fields");
 			return res.status(400).json({
 				success: false,
 				message: "Please fill in all required fields"
@@ -101,13 +109,16 @@ export const sendInquiry = async (req, res) => {
 			transporter.sendMail(customerMailOptions)
 		]);
 
+		console.log("Emails sent successfully");
 		res.status(200).json({
 			success: true,
 			message: "Inquiry sent successfully! Check your email for confirmation."
 		});
 
 	} catch (error) {
+		console.error("=== CONTACT CONTROLLER ERROR ===");
 		console.error("Error sending inquiry:", error);
+		console.error("Error stack:", error.stack);
 		res.status(500).json({
 			success: false,
 			message: "Failed to send inquiry. Please try again later."
