@@ -4,7 +4,7 @@ import CarCategories from "../components/CarCategories";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
-import FeaturedCars from "../components/FeaturedCars";
+
 
 
 const HomePage = () => {
@@ -19,7 +19,7 @@ const HomePage = () => {
 
 			<div className='relative z-10'>
 				<HeroSection />
-				<FeaturedCars />
+			
 				<CarCategories />
 				<WhyChooseUs />
 				<Testimonials />
