@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import CarCard from "./CarCard";
+import CarCard from "./ProductCard";
 
 const FeaturedCars = ({ featuredCars }) => {
 	return (
