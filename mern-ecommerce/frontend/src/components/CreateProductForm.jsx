@@ -124,7 +124,7 @@ const CreateProductForm = () => {
 					</select>
 				</div>
 
-				<div className='mt-1 flex items-center'>
+				<div className='mt-1 flex flex-col space-y-3'>
 					<input type='file' id='image' className='sr-only' accept='image/*' onChange={handleImageChange} />
 					<label
 						htmlFor='image'
@@ -133,7 +133,12 @@ const CreateProductForm = () => {
 						<Upload className='h-5 w-5 inline-block mr-2' />
 						Upload Image
 					</label>
-					{newProduct.image && <span className='ml-3 text-sm text-gray-400'>Image uploaded </span>}
+					{newProduct.image && (
+						<div className='flex items-center space-x-3'>
+							<img src={newProduct.image} alt='Preview' className='w-16 h-16 object-cover rounded-md' />
+							<span className='text-sm text-gray-400'>Image uploaded successfully</span>
+						</div>
+					)}
 				</div>
 
 				<button

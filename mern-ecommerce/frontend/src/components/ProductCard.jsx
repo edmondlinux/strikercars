@@ -4,7 +4,7 @@ import { Heart, Eye, Calendar, Gauge } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 import { useState } from "react";
 
-const CarCard = ({ car }) => {
+const CarCard = ({ product }) => {
 	const { user } = useUserStore();
 	const [isLiked, setIsLiked] = useState(false);
 
@@ -24,7 +24,7 @@ const CarCard = ({ car }) => {
 	return (
 		<div className='flex w-full relative flex-col overflow-hidden rounded-2xl border border-gray-700 shadow-xl bg-gray-800 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1'>
 			<div className='relative mx-4 mt-4 flex h-60 overflow-hidden rounded-xl'>
-				<img className='object-cover w-full h-full' src={car.image} alt={car.name} />
+				<img className='object-cover w-full h-full' src={product.image} alt={product.name} />
 				<div className='absolute inset-0 bg-black bg-opacity-20' />
 				
 				{/* Action buttons */}
@@ -51,7 +51,7 @@ const CarCard = ({ car }) => {
 			</div>
 
 			<div className='mt-4 px-5 pb-5 flex-1 flex flex-col'>
-				<h5 className='text-xl font-bold tracking-tight text-white mb-2'>{car.name}</h5>
+				<h5 className='text-xl font-bold tracking-tight text-white mb-2'>{product.name}</h5>
 				
 				{/* Car details */}
 				<div className='flex items-center space-x-4 mb-4 text-gray-300'>
@@ -66,16 +66,16 @@ const CarCard = ({ car }) => {
 				</div>
 
 				<p className='text-gray-400 text-sm mb-4 line-clamp-2'>
-					{car.description || "Well-maintained vehicle with clean history. Perfect for daily commuting."}
+					{product.description || "Well-maintained vehicle with clean history. Perfect for daily commuting."}
 				</p>
 
 				<div className='mt-auto'>
 					<div className='flex items-center justify-between mb-4'>
 						<div>
-							<p className='text-3xl font-bold text-red-500'>${car.price.toLocaleString()}</p>
+							<p className='text-3xl font-bold text-red-500'>${product.price.toLocaleString()}</p>
 							<p className='text-sm text-gray-400'>or $299/month</p>
 						</div>
-					</div>
+					</div></div>
 
 					<div className='flex space-x-2'>
 						<button
