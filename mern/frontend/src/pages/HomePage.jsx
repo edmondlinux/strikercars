@@ -4,7 +4,7 @@ import CarCategories from "../components/CarCategories";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
-import ProductList from "../components/ProductList";
+import ProductsList from "../components/ProductsList";
 
 
 
@@ -25,7 +25,7 @@ const HomePage = () => {
 				<WhyChooseUs />
 				<Testimonials />
 				<CallToAction />
-				<ProductList />
+				<ProductsList />
 			</div>
 		</div>
 	);
