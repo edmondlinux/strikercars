@@ -30,11 +30,11 @@ const FeaturedProducts = ({ featuredProducts }) => {
 		setCurrentIndex((prevIndex) => prevIndex - itemsPerPage);
 	};
 
-	const isStartDisabled = currentIndex === 0;
-	const isEndDisabled = currentIndex >= displayProducts.length - itemsPerPage;
-
 	// Limit to 3 featured products maximum
 	const displayProducts = featuredProducts?.slice(0, 3) || [];
+
+	const isStartDisabled = currentIndex === 0;
+	const isEndDisabled = currentIndex >= displayProducts.length - itemsPerPage;
 
 	return (
 		<div className='py-12'>
