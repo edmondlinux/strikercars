@@ -131,7 +131,10 @@ const CategoriesList = () => {
 												<img
 													src={editForm.image}
 													alt="Preview"
-													className='w-16 h-16 object-cover rounded-lg'
+													className='w-16 h-16 object-cover rounded-lg border border-gray-600'
+													onError={(e) => {
+														e.target.style.display = 'none';
+													}}
 												/>
 											)}
 										</div>
@@ -156,11 +159,21 @@ const CategoriesList = () => {
 							) : (
 								<div className='flex items-center justify-between'>
 									<div className='flex items-center space-x-4'>
-										<img
-											src={category.image}
-											alt={category.name}
-											className='w-16 h-16 object-cover rounded-lg'
-										/>
+										{category.image ? (
+											<img
+												src={category.image}
+												alt={category.name}
+												className='w-16 h-16 object-cover rounded-lg border border-gray-600'
+												onError={(e) => {
+													e.target.src = '/api/placeholder/64/64';
+													e.target.onerror = null;
+												}}
+											/>
+										) : (
+											<div className='w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center border border-gray-500'>
+												<span className='text-gray-400 text-xs'>No Image</span>
+											</div>
+										)}
 										<div>
 											<h3 className='text-white font-medium'>{category.name}</h3>
 											<p className='text-gray-300 text-sm'>{category.description}</p>
