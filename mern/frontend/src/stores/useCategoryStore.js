@@ -26,12 +26,7 @@ export const useCategoryStore = create((set) => ({
 		try {
 			const response = await axios.get("/categories");
 			console.log("Categories fetched:", response.data.categories);
-			// Validate image URLs
-			const validatedCategories = (response.data.categories || []).map(category => ({
-				...category,
-				image: category.image && category.image.trim() !== '' ? category.image : null
-			}));
-			set({ categories: validatedCategories, loading: false });
+			set({ categories: response.data.categories || [], loading: false });
 		} catch (error) {
 			console.error("Failed to fetch categories:", error);
 			set({ error: "Failed to fetch categories", loading: false, categories: [] });

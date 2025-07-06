@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useCategoryStore } from "../stores/useCategoryStore";
 import { useEffect } from "react";
@@ -40,14 +41,14 @@ const CarCategories = () => {
 											src={category.image}
 											alt={category.name}
 											className='w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110'
+											crossOrigin="anonymous"
 											onError={(e) => {
 												console.log('Category image failed to load:', category.image);
 												e.target.style.display = 'none';
-												e.target.parentNode.innerHTML = `
-													<div class='w-full h-48 bg-gray-700 flex items-center justify-center'>
-														<span class='text-gray-400'>No Image Available</span>
-													</div>
-												`;
+												const fallback = document.createElement('div');
+												fallback.className = 'w-full h-48 bg-gray-700 flex items-center justify-center';
+												fallback.innerHTML = '<span class="text-gray-400">No Image Available</span>';
+												e.target.parentNode.appendChild(fallback);
 											}}
 										/>
 									) : (
