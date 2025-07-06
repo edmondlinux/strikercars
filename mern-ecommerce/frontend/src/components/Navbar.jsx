@@ -45,28 +45,16 @@ const Navbar = () => {
 							Home
 						</Link>
 						<Link
-							to="/inventory"
+							to="/shop"
 							className='text-gray-300 hover:text-red-400 transition duration-300 font-medium'
 						>
-							Inventory
+							Shop
 						</Link>
 						<Link
-							to="/financing"
+							to="/payments"
 							className='text-gray-300 hover:text-red-400 transition duration-300 font-medium'
 						>
-							Financing
-						</Link>
-						<Link
-							to="/about"
-							className='text-gray-300 hover:text-red-400 transition duration-300 font-medium'
-						>
-							About Us
-						</Link>
-						<Link
-							to="/contact"
-							className='text-gray-300 hover:text-red-400 transition duration-300 font-medium'
-						>
-							Contact
+							Payments
 						</Link>
 
 						{isAdmin && (
