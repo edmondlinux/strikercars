@@ -29,7 +29,7 @@ const AdminPage = () => {
 
 	return (
 		<div className='min-h-screen relative overflow-hidden bg-gray-900'>
-			<div className='relative z-10 container mx-auto px-4 pt-24 pb-16'>
+			<div className='relative z-10 container mx-auto px-4 pt-32 pb-16'>
 				<motion.div
 					className='bg-gradient-to-r from-emerald-800 to-emerald-600 rounded-xl p-8 mb-8 shadow-2xl'
 					initial={{ opacity: 0, y: -20 }}
