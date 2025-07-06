@@ -13,8 +13,10 @@ const FeaturedCars = () => {
 	}, [fetchFeaturedProducts]);
 
 	// Get featured products first, then fallback to any products, limit to 3
-	const featuredCars = products?.filter(product => product.isFeatured)?.slice(0, 3) || [];
-	const displayCars = featuredCars.length > 0 ? featuredCars : (products?.slice(0, 3) || []);
+	// Filter out any null/undefined products
+	const validProducts = products?.filter(product => product && product._id) || [];
+	const featuredCars = validProducts.filter(product => product.isFeatured)?.slice(0, 3) || [];
+	const displayCars = featuredCars.length > 0 ? featuredCars : (validProducts?.slice(0, 3) || []);
 
 	if (loading) {
 		return (
@@ -50,7 +52,7 @@ const FeaturedCars = () => {
 				{displayCars.length > 0 ? (
 					<>
 						<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-							{displayCars.map((car, index) => (
+							{displayCars.filter(car => car && car._id).map((car, index) => (
 								<motion.div
 									key={car._id}
 									initial={{ opacity: 0, y: 30 }}
