@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useProductStore } from "../stores/useProductStore";
 import HeroSection from "../components/HeroSection";
-import FeaturedCars from "../components/FeaturedCars";
+import FeaturedProducts from "../components/FeaturedProducts";
 import CarCategories from "../components/CarCategories";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
@@ -27,7 +27,7 @@ const HomePage = () => {
 			<div className='relative z-10'>
 				<HeroSection />
 				<CarCategories />
-				{!isLoading && products.length > 0 && <FeaturedCars featuredCars={products} />}
+				{!isLoading && products.length > 0 && <FeaturedProducts featuredProducts={products} />}
 				<WhyChooseUs />
 				<Testimonials />
 				<CallToAction />
