@@ -8,6 +8,7 @@ import CallToAction from "../components/CallToAction";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import SEOHead from "../components/SEOHead";
+import CarCategories from "../components/CarCategories";
 
 const HomePage = () => {
 	return (
