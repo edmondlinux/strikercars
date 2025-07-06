@@ -91,7 +91,7 @@ const CarCard = ({ product }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	);
 };
 
