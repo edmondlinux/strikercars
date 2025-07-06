@@ -340,23 +340,33 @@ const CreateProductForm = () => {
 					</label>
 					
 					{newProduct.images.length > 0 && (
-						<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-							{newProduct.images.map((image, index) => (
-								<div key={index} className='relative'>
-									<img 
-										src={image} 
-										alt={`Preview ${index + 1}`} 
-										className='w-full h-24 object-cover rounded-md' 
-									/>
-									<button
-										type="button"
-										onClick={() => removeImage(index)}
-										className='absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600'
-									>
-										<X className='h-4 w-4' />
-									</button>
-								</div>
-							))}
+						<div className='space-y-4'>
+							<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+								{newProduct.images.map((image, index) => (
+									<div key={index} className='relative'>
+										<img 
+											src={image} 
+											alt={`Preview ${index + 1}`} 
+											className='w-full h-24 object-cover rounded-md border-2 border-gray-600' 
+										/>
+										<button
+											type="button"
+											onClick={() => removeImage(index)}
+											className='absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 shadow-lg'
+										>
+											<X className='h-4 w-4' />
+										</button>
+										{index === 0 && (
+											<div className='absolute bottom-1 left-1 bg-red-500 text-white text-xs px-2 py-1 rounded'>
+												Main
+											</div>
+										)}
+									</div>
+								))}
+							</div>
+							<div className='text-sm text-gray-400'>
+								{newProduct.images.length} image(s) selected. First image will be the main display image.
+							</div>
 						</div>
 					)}
 				</div>

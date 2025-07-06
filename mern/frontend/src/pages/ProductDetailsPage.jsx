@@ -16,6 +16,7 @@ const ProductDetailsPage = () => {
 	const [product, setProduct] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [emailSent, setEmailSent] = useState(false);
+	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 	const { products } = useProductStore();
 	const { addToFavorites } = useFavoriteStore();
 	const { addToCart } = useCartStore();
@@ -55,11 +56,31 @@ const ProductDetailsPage = () => {
 
 
 	useEffect(() => {
+		const handleKeyPress = (e) => {
+			if (!product || !product.images || product.images.length <= 1) return;
+			
+			if (e.key === 'ArrowLeft') {
+				setSelectedImageIndex((prev) => 
+					prev === 0 ? product.images.length - 1 : prev - 1
+				);
+			} else if (e.key === 'ArrowRight') {
+				setSelectedImageIndex((prev) => 
+					prev === product.images.length - 1 ? 0 : prev + 1
+				);
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyPress);
+		return () => window.removeEventListener('keydown', handleKeyPress);
+	}, [product]);
+
+	useEffect(() => {
 		// First check in the regular products
 		const foundProduct = products.find(p => p._id === id);
 		if (foundProduct) {
 			setProduct(foundProduct);
 			setLoading(false);
+			setSelectedImageIndex(0); // Reset image selection
 			return;
 		}
 
@@ -116,6 +137,7 @@ const ProductDetailsPage = () => {
 		if (featuredCar) {
 			setProduct(featuredCar);
 			setLoading(false);
+			setSelectedImageIndex(0); // Reset image selection
 		} else {
 			setLoading(false);
 		}
@@ -154,18 +176,53 @@ const ProductDetailsPage = () => {
 				</motion.button>
 
 				<div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-					{/* Image Section */}
+					{/* Image Gallery Section */}
 					<motion.div
-						className='bg-gray-800 rounded-lg overflow-hidden'
+						className='space-y-4'
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ duration: 0.5 }}
 					>
-						<img
-							src={product.image}
-							alt={product.name}
-							className='w-full h-96 object-cover'
-						/>
+						{/* Main Image */}
+						<div className='bg-gray-800 rounded-lg overflow-hidden'>
+							<img
+								src={product.images && product.images.length > 0 ? product.images[selectedImageIndex] : product.image}
+								alt={product.name}
+								className='w-full h-96 object-cover'
+							/>
+						</div>
+
+						{/* Thumbnail Gallery */}
+						{product.images && product.images.length > 1 && (
+							<div className='flex space-x-2 overflow-x-auto pb-2'>
+								{product.images.map((image, index) => (
+									<motion.button
+										key={index}
+										onClick={() => setSelectedImageIndex(index)}
+										className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+											selectedImageIndex === index
+												? 'border-red-500 ring-2 ring-red-500 ring-opacity-50'
+												: 'border-gray-600 hover:border-gray-400'
+										}`}
+										whileHover={{ scale: 1.05 }}
+										whileTap={{ scale: 0.95 }}
+									>
+										<img
+											src={image}
+											alt={`${product.name} ${index + 1}`}
+											className='w-full h-full object-cover'
+										/>
+									</motion.button>
+								))}
+							</div>
+						)}
+
+						{/* Image Counter */}
+						{product.images && product.images.length > 1 && (
+							<div className='text-center text-gray-400 text-sm'>
+								{selectedImageIndex + 1} of {product.images.length}
+							</div>
+						)}
 					</motion.div>
 
 					{/* Details Section */}

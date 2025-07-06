@@ -74,10 +74,15 @@ const CarCard = memo(({ product }) => {
 				</div>
 
 				{/* Status badge */}
-				<div className='absolute top-3 left-3'>
+				<div className='absolute top-3 left-3 flex flex-col space-y-2'>
 					<span className='bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium'>
 						Available
 					</span>
+					{product.images && product.images.length > 1 && (
+						<span className='bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-medium'>
+							{product.images.length} Photos
+						</span>
+					)}
 				</div>
 			</div>
 
