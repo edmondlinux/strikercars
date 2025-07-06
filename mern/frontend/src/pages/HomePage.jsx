@@ -1,20 +1,11 @@
 
-import { useEffect } from "react";
-import { useProductStore } from "../stores/useProductStore";
 import HeroSection from "../components/HeroSection";
-import FeaturedProducts from "../components/FeaturedProducts";
 import CarCategories from "../components/CarCategories";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
 
 const HomePage = () => {
-	const { fetchFeaturedProducts, products, isLoading } = useProductStore();
-
-	useEffect(() => {
-		fetchFeaturedProducts();
-	}, [fetchFeaturedProducts]);
-
 	return (
 		<div className='relative min-h-screen text-white overflow-hidden bg-gray-900'>
 			{/* Background gradient */}
@@ -27,7 +18,6 @@ const HomePage = () => {
 			<div className='relative z-10'>
 				<HeroSection />
 				<CarCategories />
-				<FeaturedProducts featuredProducts={products} />
 				<WhyChooseUs />
 				<Testimonials />
 				<CallToAction />
