@@ -38,8 +38,8 @@ mode = "parallel"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd mern-ecommerce/backend && npm install && npm start"
+args = "cd mern/backend && npm install && npm start"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd mern-ecommerce/frontend && npm install && npm run dev"
+args = "cd mern/frontend && npm install && npm run dev"
