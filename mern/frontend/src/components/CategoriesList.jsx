@@ -133,6 +133,7 @@ const CategoriesList = () => {
 													alt="Preview"
 													className='w-16 h-16 object-cover rounded-lg border border-gray-600'
 													onError={(e) => {
+														console.log('Preview image failed to load:', editForm.image);
 														e.target.style.display = 'none';
 													}}
 												/>
@@ -165,8 +166,13 @@ const CategoriesList = () => {
 												alt={category.name}
 												className='w-16 h-16 object-cover rounded-lg border border-gray-600'
 												onError={(e) => {
-													e.target.src = '/api/placeholder/64/64';
-													e.target.onerror = null;
+													console.log('Image failed to load:', category.image);
+													e.target.style.display = 'none';
+													e.target.parentNode.innerHTML = `
+														<div class='w-16 h-16 bg-gray-600 rounded-lg flex items-center justify-center border border-gray-500'>
+															<span class='text-gray-400 text-xs'>No Image</span>
+														</div>
+													`;
 												}}
 											/>
 										) : (

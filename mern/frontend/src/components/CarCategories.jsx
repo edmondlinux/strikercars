@@ -1,72 +1,73 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { useCategoryStore } from "../stores/useCategoryStore";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const CarCategories = () => {
-	const { categories, fetchAllCategories, loading } = useCategoryStore();
+	const { categories, fetchAllCategories } = useCategoryStore();
 
 	useEffect(() => {
 		fetchAllCategories();
 	}, [fetchAllCategories]);
 
-	if (loading) {
-		return (
-			<div className="py-16 text-center">
-				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto"></div>
-			</div>
-		);
-	}
-
 	return (
-		<section className='py-20 px-4 sm:px-6 lg:px-8'>
-			<div className='max-w-7xl mx-auto'>
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					viewport={{ once: true }}
-					className='text-center mb-16'
+		<div className='py-16'>
+			<div className='container mx-auto px-4'>
+				<motion.h2
+					className='text-4xl font-bold text-center mb-12 text-white'
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8 }}
 				>
-					<h2 className='text-4xl lg:text-5xl font-bold text-white mb-4'>
-						Shop by <span className='text-red-500'>Category</span>
-					</h2>
-					<p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-						Find the perfect vehicle for your lifestyle. From fuel-efficient sedans to powerful trucks.
-					</p>
-				</motion.div>
+					Browse by Category
+				</motion.h2>
 
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
 					{categories.map((category, index) => (
 						<motion.div
-							key={category.name}
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: index * 0.1 }}
-							viewport={{ once: true }}
+							key={category._id}
+							className='relative group cursor-pointer'
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: index * 0.1 }}
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
 						>
-							<Link
-								to={`/category/${category._id}`}
-								className='group block relative overflow-hidden rounded-2xl bg-gray-800 hover:transform hover:scale-105 transition-all duration-300'
-							>
-								<div className='aspect-w-16 aspect-h-12'>
-									<img
-										src={category.imageUrl}
-										alt={category.name}
-										className='w-full h-64 object-cover group-hover:scale-110 transition duration-500'
-									/>
-								</div>
-								<div className='absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent' />
-								<div className='absolute bottom-0 left-0 right-0 p-6'>
-									<h3 className='text-2xl font-bold text-white mb-2'>{category.name}</h3>
-									<p className='text-red-400 font-medium'>{category.count}</p>
+							<Link to={`/category/${category.href}`}>
+								<div className='relative overflow-hidden rounded-lg bg-gray-800 shadow-lg'>
+									{category.image ? (
+										<img
+											src={category.image}
+											alt={category.name}
+											className='w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110'
+											onError={(e) => {
+												console.log('Category image failed to load:', category.image);
+												e.target.style.display = 'none';
+												e.target.parentNode.innerHTML = `
+													<div class='w-full h-48 bg-gray-700 flex items-center justify-center'>
+														<span class='text-gray-400'>No Image Available</span>
+													</div>
+												`;
+											}}
+										/>
+									) : (
+										<div className='w-full h-48 bg-gray-700 flex items-center justify-center'>
+											<span className='text-gray-400'>No Image Available</span>
+										</div>
+									)}
+									<div className='absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
+										<div className='text-center'>
+											<h3 className='text-xl font-bold text-white mb-2'>{category.name}</h3>
+											<p className='text-gray-300 text-sm'>{category.description}</p>
+										</div>
+									</div>
 								</div>
 							</Link>
 						</motion.div>
 					))}
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 
