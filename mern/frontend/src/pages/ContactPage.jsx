@@ -1,12 +1,12 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mail, Phone, User, MessageSquare, Car } from "lucide-react";
-import toast from "react-hot-toast";
-import axios from "../lib/axios";
+import { Mail, Phone, MapPin, Car, Clock, ArrowLeft } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
+import axios from "../lib/axios";
+import toast from "react-hot-toast";
 import LoadingSpinner from "../components/LoadingSpinner";
+import SEOHead from "../components/SEOHead";
 
 const ContactPage = () => {
 	const { productId } = useParams();
@@ -74,7 +74,7 @@ const ContactPage = () => {
 			console.error("Error response data:", error.response?.data);
 			console.error("Error response status:", error.response?.status);
 			console.error("Error config:", error.config);
-			
+
 			toast.error(error.response?.data?.message || "Failed to send inquiry");
 		} finally {
 			setLoading(false);
@@ -88,13 +88,28 @@ const ContactPage = () => {
 		});
 	};
 
-	if (!product) {
-		return <LoadingSpinner />;
-	}
+	if (loading) return <LoadingSpinner />;
+
+	const contactTitle = product 
+		? `Contact Us About ${product.name} | Strikers No Title Cars`
+		: "Contact Us | Strikers No Title Cars";
+
+	const contactDescription = product 
+		? `Get in touch with us about the ${product.name} priced at $${product.price.toLocaleString()}. Our team is ready to help you with financing options and scheduling a test drive.`
+		: "Contact Strikers No Title Cars for questions about our vehicles, financing options, or to schedule a test drive. We're here to help you find your perfect vehicle.";
 
 	return (
-		<div className='min-h-screen bg-gray-900 py-8 md:py-16'>
-			<div className='mx-auto max-w-4xl px-4'>
+		<div className="min-h-screen bg-gray-900 py-8 md:py-16">
+			<SEOHead 
+				title={contactTitle}
+				description={contactDescription}
+				keywords="contact car dealer, vehicle inquiry, car financing, test drive, auto sales contact, used car questions"
+				image={product?.image}
+				url={`/contact/${productId}`}
+				type="website"
+			/>
+
+			<div className="mx-auto max-w-4xl px-4">
 				{/* Header */}
 				<motion.div
 					className='mb-8'
@@ -129,7 +144,7 @@ const ContactPage = () => {
 							<Car className='mr-2 text-red-500' size={24} />
 							Vehicle Details
 						</h2>
-						
+
 						<div className='mb-4'>
 							<img 
 								src={product.image} 
@@ -137,7 +152,7 @@ const ContactPage = () => {
 								className='w-full h-48 object-cover rounded-lg'
 							/>
 						</div>
-						
+
 						<div className='space-y-3'>
 							<div>
 								<p className='text-gray-400 text-sm'>Vehicle Name</p>

@@ -21,6 +21,7 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "nodemailer": "^7.0.4"
+    "nodemailer": "^7.0.4",
+    "react-helmet-async": "^2.0.5"
   }
 }

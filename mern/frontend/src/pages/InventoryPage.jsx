@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Filter, Grid, List } from "lucide-react";
@@ -6,6 +5,7 @@ import { useProductStore } from "../stores/useProductStore";
 import ProductCard from "../components/ProductCard";
 import CategoryFilter from "../components/CategoryFilter";
 import ProductGrid from "../components/ProductGrid";
+import SEOHead from "../components/SEOHead";
 
 const InventoryPage = () => {
 	const { fetchAllProducts, products, loading } = useProductStore();
@@ -54,6 +54,14 @@ const InventoryPage = () => {
 
 	return (
 		<div className="min-h-screen bg-gray-900 pt-20">
+			<SEOHead 
+				title="Vehicle Inventory - Browse Our Complete Collection | Strikers No Title Cars"
+				description="Browse our complete inventory of quality pre-owned vehicles. Search and filter through our extensive collection of cars, SUVs, and more at Strikers No Title Cars."
+				keywords="car inventory, used cars, pre-owned vehicles, browse cars, search vehicles, auto inventory, car dealership inventory"
+				url="/inventory"
+				type="website"
+			/>
+
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 				{/* Header */}
 				<motion.div

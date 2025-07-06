@@ -7,13 +7,22 @@ import CartItem from "../components/CartItem";
 import PeopleAlsoBought from "../components/PeopleAlsoBought";
 import OrderSummary from "../components/OrderSummary";
 import GiftCouponCard from "../components/GiftCouponCard";
+import SEOHead from "../components/SEOHead";
 
 const CartPage = () => {
 	const { cart } = useCartStore();
 
 	return (
 		<div className='min-h-screen bg-gray-900 py-8 md:py-16'>
-			<div className='mx-auto max-w-screen-xl px-4 2xl:px-0'>
+			<SEOHead 
+				title="Shopping Cart | Strikers No Title Cars"
+				description="Review your selected vehicles and proceed to checkout. Complete your purchase of quality pre-owned vehicles at Strikers No Title Cars."
+				keywords="shopping cart, vehicle checkout, buy used car, car purchase, auto sales"
+				url="/cart"
+				type="website"
+			/>
+			
+			<div className='mx-auto max-w-screen-xl px-4 2xl:px-0'></div>
 				{/* Header Section */}
 				<motion.div
 					className='mb-8'

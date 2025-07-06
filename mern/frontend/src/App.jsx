@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
@@ -37,39 +38,41 @@ function App() {
 	if (checkingAuth) return <LoadingSpinner />;
 
 	return (
-		<div className='min-h-screen bg-gray-900 text-white relative overflow-hidden'>
-			{/* Background gradient */}
-			<div className='absolute inset-0 overflow-hidden'>
-				<div className='absolute inset-0'>
-					<div className='absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.3)_0%,rgba(153,27,27,0.2)_45%,rgba(0,0,0,0.1)_100%)]' />
+		<HelmetProvider>
+			<div className='min-h-screen bg-gray-900 text-white relative overflow-hidden'>
+				{/* Background gradient */}
+				<div className='absolute inset-0 overflow-hidden'>
+					<div className='absolute inset-0'>
+						<div className='absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.3)_0%,rgba(153,27,27,0.2)_45%,rgba(0,0,0,0.1)_100%)]' />
+					</div>
 				</div>
+
+				<div className='relative z-10 min-h-screen flex flex-col'>
+					<Navbar />
+
+					<main className='flex-1'>
+						<Routes>
+							<Route path='/' element={<HomePage />} />
+							<Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />
+							<Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
+							<Route path='/admin-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to='/login' />} />
+							<Route path='/inventory' element={<InventoryPage />} />
+							<Route path='/product/:id' element={<ProductDetailsPage />} />
+							<Route path='/category/:category' element={<CategoryPage />} />
+							<Route path='/cart' element={user ? <CartPage /> : <Navigate to='/login' />} />
+							<Route path='/orders' element={user ? <OrdersPage /> : <Navigate to='/login' />} />
+							<Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to='/login' />} />
+							<Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} />
+							<Route path='/contact/:productId' element={<ContactPage />} />
+						</Routes>
+					</main>
+
+					<Footer />
+				</div>
+
+				<Toaster />
 			</div>
-
-			<div className='relative z-10 min-h-screen flex flex-col'>
-				<Navbar />
-
-				<main className='flex-1'>
-					<Routes>
-						<Route path='/' element={<HomePage />} />
-						<Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />
-						<Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
-						<Route path='/admin-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to='/login' />} />
-						<Route path='/inventory' element={<InventoryPage />} />
-						<Route path='/product/:id' element={<ProductDetailsPage />} />
-						<Route path='/category/:category' element={<CategoryPage />} />
-						<Route path='/cart' element={user ? <CartPage /> : <Navigate to='/login' />} />
-						<Route path='/orders' element={user ? <OrdersPage /> : <Navigate to='/login' />} />
-						<Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to='/login' />} />
-						<Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} />
-						<Route path='/contact/:productId' element={<ContactPage />} />
-					</Routes>
-				</main>
-
-				<Footer />
-			</div>
-
-			<Toaster />
-		</div>
+		</HelmetProvider>
 	);
 }
 
