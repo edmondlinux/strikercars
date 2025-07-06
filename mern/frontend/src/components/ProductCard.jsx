@@ -143,14 +143,15 @@ const CarCard = memo(({ product }) => {
 						</button>
 					</div>
 				</div>
-			</div>
-
 			<ContactForm
 				product={product}
 				isOpen={showContactForm}
 				onClose={() => setShowContactForm(false)}
 				onEmailSent={handleEmailSent}
 			/>
+			</div>
+
+			
 	);
 });
 

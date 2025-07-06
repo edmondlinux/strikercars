@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 // Create transporter for sending emails
 const createTransporter = () => {
-	return nodemailer.createTransporter({
+	return nodemailer.createTransport({
 		service: 'gmail', // You can change this to your preferred email service
 		auth: {
 			user: process.env.ADMIN_EMAIL,
