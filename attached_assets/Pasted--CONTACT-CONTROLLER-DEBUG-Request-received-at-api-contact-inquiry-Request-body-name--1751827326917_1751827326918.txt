@@ -1,0 +1,121 @@
+=== CONTACT CONTROLLER DEBUG ===
+Request received at /api/contact/inquiry
+Request body: {
+  name: 'John Doe',
+  email: 'cngtworld@gmail.com',
+  phone: '555-123-4567',
+  message: "I'm interested in this vehicle and would like more information about financing options.",
+  productId: '686a7e09e602b49e1d41fbc3',
+  productName: '2020 Honda Civic',
+  productPrice: 25000
+}
+Request headers: {
+  host: 'bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev',
+  'user-agent': 'PostmanRuntime/7.44.1',
+  'content-length': '302',
+  accept: '*/*',
+  'accept-encoding': 'gzip, deflate, br',
+  'cache-control': 'no-cache',
+  'content-type': 'application/json',
+  'postman-token': 'b1a77420-a72e-4473-8484-aca157cbaaee',
+  'x-forwarded-for': '54.86.50.139, 10.81.5.177',
+  'x-forwarded-proto': 'https',
+  'x-replit-user-bio': '',
+  'x-replit-user-id': '',
+  'x-replit-user-name': '',
+  'x-replit-user-profile-image': '',
+  'x-replit-user-roles': '',
+  'x-replit-user-teams': '',
+  'x-replit-user-url': ''
+}
+Extracted data: {
+  name: 'John Doe',
+  email: 'cngtworld@gmail.com',
+  phone: '555-123-4567',
+  message: "I'm interested in this vehicle and would like more information about financing options.",
+  productId: '686a7e09e602b49e1d41fbc3',
+  productName: '2020 Honda Civic',
+  productPrice: 25000
+}
+=== CONTACT CONTROLLER ERROR ===
+Error sending inquiry: Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials e9e14a558f8ab-3e0f9c81bc1sm20717725ab.40 - gsmtp
+    at SMTPConnection._formatError (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+    at SMTPConnection._actionAUTHComplete (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:1588:34)
+    at SMTPConnection.<anonymous> (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:556:26)
+    at SMTPConnection._processResponse (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
+    at SMTPConnection._onData (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
+    at SMTPConnection._onSocketData (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
+    at TLSSocket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5) {
+  code: 'EAUTH',
+  response: '535-5.7.8 Username and Password not accepted. For more information, go to\n' +
+    '535 5.7.8  https://support.google.com/mail/?p=BadCredentials e9e14a558f8ab-3e0f9c81bc1sm20717725ab.40 - gsmtp',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+Error stack: Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials e9e14a558f8ab-3e0f9c81bc1sm20717725ab.40 - gsmtp
+    at SMTPConnection._formatError (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+    at SMTPConnection._actionAUTHComplete (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:1588:34)
+    at SMTPConnection.<anonymous> (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:556:26)
+    at SMTPConnection._processResponse (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
+    at SMTPConnection._onData (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
+    at SMTPConnection._onSocketData (/home/runner/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
+    at TLSSocket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tls%20-u%20redis://default:ATq3AAIjcDFkZGFmOWJkNDE3YTg0MzJiYWRkOTFiNzk1YzM0ZTJiMXAxMA@in-mutt-15031.upstash.io:6379
+    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16)
+[ioredis] Unhandled error event: Error: connect ENOENT %20--tl
