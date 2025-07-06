@@ -6,7 +6,7 @@ const createTransporter = () => {
 	return nodemailer.createTransport({
 		service: 'gmail', // You can change this to your preferred email service
 		auth: {
-			user: process.env.NODE_ADMIN_EMAIL,
+			user: process.env.ADMIN_EMAIL,
 			pass: process.env.ADMIN_EMAIL_PASSWORD, // Use app password for Gmail
 		},
 	});
