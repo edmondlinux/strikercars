@@ -1,4 +1,3 @@
-
 import nodemailer from "nodemailer";
 
 // Create transporter for sending emails
@@ -17,7 +16,7 @@ export const sendInquiry = async (req, res) => {
 	console.log("Request received at /api/contact/inquiry");
 	console.log("Request body:", req.body);
 	console.log("Request headers:", req.headers);
-	
+
 	try {
 		const { name, email, phone, message, productId, productName, productPrice } = req.body;
 
@@ -36,8 +35,8 @@ export const sendInquiry = async (req, res) => {
 
 		// Email to admin
 		const adminMailOptions = {
-			from: email,
-			to: process.env.ADMIN_EMAIL,
+			from: process.env.NODE_ADMIN_EMAIL,
+			to: process.env.REACT_ADMIN_EMAIL,
 			subject: `New Vehicle Inquiry - ${productName}`,
 			html: `
 				<h2>New Vehicle Inquiry</h2>
@@ -67,14 +66,14 @@ export const sendInquiry = async (req, res) => {
 
 		// Email to customer
 		const customerMailOptions = {
-			from: process.env.ADMIN_EMAIL,
+			from: process.env.NODE_ADMIN_EMAIL,
 			to: email,
 			subject: `Thank you for your inquiry about ${productName}`,
 			html: `
 				<h2>Thank you for your interest!</h2>
 				<p>Dear ${name},</p>
 				<p>Thank you for your inquiry about the <strong>${productName}</strong> priced at <strong>$${productPrice.toLocaleString()}</strong>.</p>
-				
+
 				<div style="background-color: #f0f8ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
 					<h3>What's Next?</h3>
 					<p>Our sales team will review your inquiry and contact you shortly. In the meantime, you can:</p>
@@ -84,7 +83,7 @@ export const sendInquiry = async (req, res) => {
 						<li>Browse more vehicles on our website</li>
 					</ul>
 				</div>
-				
+
 				<div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
 					<h3>Your Inquiry Details:</h3>
 					<p><strong>Vehicle:</strong> ${productName}</p>
@@ -92,10 +91,10 @@ export const sendInquiry = async (req, res) => {
 					<p><strong>Your Phone:</strong> ${phone}</p>
 					${message ? `<p><strong>Your Message:</strong> ${message}</p>` : ''}
 				</div>
-				
+
 				<p>We look forward to helping you find your perfect vehicle!</p>
 				<p>Best regards,<br>Strikers Auto Team</p>
-				
+
 				<hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
 				<p style="color: #666; font-size: 12px;">
 					If you have any immediate questions, please call us at ${process.env.DEALER_PHONE} or email us at ${process.env.ADMIN_EMAIL}
