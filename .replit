@@ -52,3 +52,12 @@ author = 40765742
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd mern/backend && node server.js"
+
+[[workflows.workflow]]
+name = "Front"
+mode = "sequential"
+author = 40765742
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd mern/frontend && npm run dev"
