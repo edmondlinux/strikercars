@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
 import InventoryPage from "./pages/InventoryPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -53,6 +54,7 @@ function App() {
 						<Route path='/login' element={!user ? <LoginPage /> : <Navigate to='/' />} />
 						<Route path='/admin-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to='/login' />} />
 						<Route path='/inventory' element={<InventoryPage />} />
+						<Route path='/product/:id' element={<ProductDetailsPage />} />
 						<Route path='/category/:category' element={<CategoryPage />} />
 						<Route path='/cart' element={user ? <CartPage /> : <Navigate to='/login' />} />
 						<Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to='/login' />} />

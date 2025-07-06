@@ -1,12 +1,13 @@
-
 import { Heart, Eye, Calendar, Gauge } from "lucide-react";
 import { useState } from "react";
 import { useUserStore } from "../stores/useUserStore";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const ProductListItem = ({ product }) => {
 	const { user } = useUserStore();
 	const [isLiked, setIsLiked] = useState(false);
+    const navigate = useNavigate();
 
 	const handleContactDealer = () => {
 		if (!user) {
@@ -21,6 +22,10 @@ const ProductListItem = ({ product }) => {
 		toast.success(isLiked ? "Removed from favorites" : "Added to favorites");
 	};
 
+    const handleViewDetails = () => {
+        navigate(`/products/${product.id}`);
+    };
+
 	return (
 		<div className="bg-gray-800 rounded-lg border border-gray-700 hover:border-red-500 transition-all duration-300 overflow-hidden">
 			<div className="flex flex-col md:flex-row">
@@ -32,7 +37,7 @@ const ProductListItem = ({ product }) => {
 						className="w-full h-full object-cover"
 					/>
 					<div className="absolute inset-0 bg-black bg-opacity-20" />
-					
+
 					{/* Status badge */}
 					<div className="absolute top-3 left-3">
 						<span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -61,7 +66,7 @@ const ProductListItem = ({ product }) => {
 					<div className="flex flex-col md:flex-row md:items-center justify-between h-full">
 						<div className="flex-1">
 							<h3 className="text-xl font-bold text-white mb-2">{product.name}</h3>
-							
+
 							{/* Car details */}
 							<div className="flex items-center space-x-4 mb-3 text-gray-300">
 								<div className="flex items-center space-x-1">
@@ -97,8 +102,11 @@ const ProductListItem = ({ product }) => {
 								>
 									Contact Dealer
 								</button>
-								<button className="flex-1 md:flex-none px-6 py-2 border border-red-600 text-red-600 hover:bg-red-600 
-								hover:text-white rounded-lg transition-all duration-300 text-sm font-medium">
+								<button 
+                                    className="flex-1 md:flex-none px-6 py-2 border border-red-600 text-red-600 hover:bg-red-600 
+								    hover:text-white rounded-lg transition-all duration-300 text-sm font-medium"
+                                    onClick={handleViewDetails}
+                                >
 									View Details
 								</button>
 							</div>

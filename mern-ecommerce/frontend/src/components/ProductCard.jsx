@@ -3,9 +3,11 @@ import toast from "react-hot-toast";
 import { Heart, Eye, Calendar, Gauge } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CarCard = ({ product }) => {
 	const { user } = useUserStore();
+	const navigate = useNavigate();
 	const [isLiked, setIsLiked] = useState(false);
 
 	const handleContactDealer = () => {
@@ -19,6 +21,10 @@ const CarCard = ({ product }) => {
 	const handleToggleLike = () => {
 		setIsLiked(!isLiked);
 		toast.success(isLiked ? "Removed from favorites" : "Added to favorites");
+	};
+
+	const handleViewDetails = () => {
+		navigate(`/product/${product._id}`);
 	};
 
 	return (
@@ -85,7 +91,10 @@ const CarCard = ({ product }) => {
 						>
 							Contact Dealer
 						</button>
-						<button className='px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-300'>
+						<button 
+							onClick={handleViewDetails}
+							className='px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-300'
+						>
 							View Details
 						</button>
 					</div>
