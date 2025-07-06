@@ -77,7 +77,7 @@ const ContactForm = ({ product, isOpen, onClose, onEmailSent }) => {
 				animate={{ opacity: 1, scale: 1 }}
 				exit={{ opacity: 0, scale: 0.9 }}
 				onClick={(e) => e.stopPropagation()}
-			></motion.str>
+			>
 				<div className="flex justify-between items-center mb-6">
 					<h2 className="text-2xl font-bold text-white">Contact Dealer</h2>
 					<button
