@@ -31,19 +31,28 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	};
 
 	const isStartDisabled = currentIndex === 0;
-	const isEndDisabled = currentIndex >= featuredProducts.length - itemsPerPage;
+	const isEndDisabled = currentIndex >= displayProducts.length - itemsPerPage;
+
+	// Limit to 3 featured products maximum
+	const displayProducts = featuredProducts?.slice(0, 3) || [];
 
 	return (
 		<div className='py-12'>
 			<div className='container mx-auto px-4'>
 				<h2 className='text-center text-5xl sm:text-6xl font-bold text-red-400 mb-4'>Featured Cars</h2>
+				
+				{displayProducts.length === 0 ? (
+					<div className='text-center py-12'>
+						<p className='text-gray-400 text-lg'>No featured cars available at the moment</p>
+					</div>
+				) : (
 				<div className='relative'>
 					<div className='overflow-hidden'>
 						<div
 							className='flex transition-transform duration-300 ease-in-out'
 							style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
 						>
-							{featuredProducts?.map((product) => (
+							{displayProducts.map((product) => (
 								<div key={product._id} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
 									<div className='bg-white bg-opacity-10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden h-full transition-all duration-300 hover:shadow-xl border border-red-500/30'>
 										<div className='overflow-hidden relative'>
@@ -123,6 +132,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 						<ChevronRight className='w-6 h-6' />
 					</button>
 				</div>
+				)}
 			</div>
 		</div>
 	);

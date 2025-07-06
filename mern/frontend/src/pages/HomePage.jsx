@@ -27,7 +27,7 @@ const HomePage = () => {
 			<div className='relative z-10'>
 				<HeroSection />
 				<CarCategories />
-				{!isLoading && products.length > 0 && <FeaturedProducts featuredProducts={products} />}
+				<FeaturedProducts featuredProducts={products} />
 				<WhyChooseUs />
 				<Testimonials />
 				<CallToAction />
