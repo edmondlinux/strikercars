@@ -4,7 +4,6 @@ import { useUserStore } from "../stores/useUserStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
 import { useNavigate } from "react-router-dom";
 import { useEffect, memo, useState } from "react";
-import ContactForm from "./ContactForm";
 
 const CarCard = memo(({ product }) => {
 	// Early return if product is undefined or null
@@ -15,7 +14,6 @@ const CarCard = memo(({ product }) => {
 	const { user } = useUserStore();
 	const navigate = useNavigate();
 	const { addToFavorites, removeFromFavorites, isFavorite, getFavorites } = useFavoriteStore();
-	const [showContactForm, setShowContactForm] = useState(false);
 	const [emailSent, setEmailSent] = useState(false);
 
 	const isLiked = isFavorite(product._id);
@@ -31,7 +29,7 @@ const CarCard = memo(({ product }) => {
 			toast.error("Please login to contact dealer", { id: "login" });
 			return;
 		}
-		setShowContactForm(true);
+		navigate(`/contact/${product._id}`);
 	};
 
 	const handleCallDealer = () => {
@@ -39,9 +37,7 @@ const CarCard = memo(({ product }) => {
 		window.open(`tel:${dealerPhone}`, '_self');
 	};
 
-	const handleEmailSent = () => {
-		setEmailSent(true);
-	};
+	
 
 	const handleToggleLike = () => {
 		if (!user) {
@@ -143,12 +139,6 @@ const CarCard = memo(({ product }) => {
 						</button>
 					</div>
 				</div>
-			<ContactForm
-				product={product}
-				isOpen={showContactForm}
-				onClose={() => setShowContactForm(false)}
-				onEmailSent={handleEmailSent}
-			/>
 			</div>
 
 			

@@ -8,14 +8,13 @@ import { useCartStore } from "../stores/useCartStore";
 import { useUserStore } from "../stores/useUserStore";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../components/LoadingSpinner";
-import ContactForm from "../components/ContactForm";
+
 
 const ProductDetailsPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const [product, setProduct] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [showContactForm, setShowContactForm] = useState(false);
 	const [emailSent, setEmailSent] = useState(false);
 	const { products } = useProductStore();
 	const { addToFavorites } = useFavoriteStore();
@@ -45,7 +44,7 @@ const ProductDetailsPage = () => {
 			toast.error("Please login to contact dealer", { id: "login" });
 			return;
 		}
-		setShowContactForm(true);
+		navigate(`/contact/${product._id}`);
 	};
 
 	const handleCallDealer = () => {
@@ -53,9 +52,7 @@ const ProductDetailsPage = () => {
 		window.open(`tel:${dealerPhone}`, '_self');
 	};
 
-	const handleEmailSent = () => {
-		setEmailSent(true);
-	};
+	
 
 	useEffect(() => {
 		// First check in the regular products
@@ -314,13 +311,7 @@ const ProductDetailsPage = () => {
 				</div>
 			</div>
 
-			<ContactForm
-				product={product}
-				isOpen={showContactForm}
-				onClose={() => setShowContactForm(false)}
-				onEmailSent={handleEmailSent}
-			/>
-		</div>
+			</div>
 	);
 };
 

@@ -1,4 +1,3 @@
-
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
@@ -8,6 +7,9 @@ import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
 import InventoryPage from "./pages/InventoryPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
+import PurchaseCancelPage from "./pages/PurchaseCancelPage";
+import ContactPage from "./pages/ContactPage";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -24,7 +26,7 @@ import PurchaseCancelPage from "./pages/PurchaseCancelPage";
 function App() {
 	const { user, checkAuth, checkingAuth } = useUserStore();
 	const { getCartItems } = useCartStore();
-	
+
 	useEffect(() => {
 		checkAuth();
 	}, [checkAuth]);
@@ -47,7 +49,7 @@ function App() {
 
 			<div className='relative z-10 min-h-screen flex flex-col'>
 				<Navbar />
-				
+
 				<main className='flex-1'>
 					<Routes>
 						<Route path='/' element={<HomePage />} />
@@ -61,12 +63,13 @@ function App() {
 						<Route path='/orders' element={user ? <OrdersPage /> : <Navigate to='/login' />} />
 						<Route path='/purchase-success' element={user ? <PurchaseSuccessPage /> : <Navigate to='/login' />} />
 						<Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} />
+						<Route path='/contact/:productId' element={<ContactPage />} />
 					</Routes>
 				</main>
 
 				<Footer />
 			</div>
-			
+
 			<Toaster />
 		</div>
 	);
