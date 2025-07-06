@@ -22,7 +22,7 @@ const CartPage = () => {
 				type="website"
 			/>
 			
-			<div className='mx-auto max-w-screen-xl px-4 2xl:px-0'>
+			<div className='mx-auto max-w-screen-xl px-4 2xl:px-0'></div>
 				{/* Header Section */}
 				<motion.div
 					className='mb-8'
