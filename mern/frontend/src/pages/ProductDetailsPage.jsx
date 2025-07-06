@@ -48,7 +48,11 @@ const ProductDetailsPage = () => {
 		window.open(`tel:${dealerPhone}`, '_self');
 	};
 
-	
+	const isVehicleCategory = (category) => {
+		const vehicleCategories = ["cars", "motorcycles", "trucks", "boats", "rvs"];
+		return vehicleCategories.includes(category);
+	};
+
 
 	useEffect(() => {
 		// First check in the regular products
@@ -181,47 +185,55 @@ const ProductDetailsPage = () => {
 							{product.description}
 						</div>
 
-						{/* Car Specifications */}
+						{/* Vehicle Specifications */}
 						<div className='grid grid-cols-2 gap-4 mb-6'>
-							<div className='bg-gray-700 p-4 rounded-lg'>
-								<div className='flex items-center mb-2'>
-									<Calendar className='text-red-400 mr-2' size={20} />
-									<span className='text-gray-300'>Year</span>
+							{(product.year || isVehicleCategory(product.category)) && (
+								<div className='bg-gray-700 p-4 rounded-lg'>
+									<div className='flex items-center mb-2'>
+										<Calendar className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Year</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.year || new Date().getFullYear()}
+									</span>
 								</div>
-								<span className='text-white font-semibold'>
-									{product.year || new Date().getFullYear()}
-								</span>
-							</div>
+							)}
 
-							<div className='bg-gray-700 p-4 rounded-lg'>
-								<div className='flex items-center mb-2'>
-									<Gauge className='text-red-400 mr-2' size={20} />
-									<span className='text-gray-300'>Mileage</span>
+							{(product.mileage || isVehicleCategory(product.category)) && (
+								<div className='bg-gray-700 p-4 rounded-lg'>
+									<div className='flex items-center mb-2'>
+										<Gauge className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Mileage</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.mileage || "N/A"} miles
+									</span>
 								</div>
-								<span className='text-white font-semibold'>
-									{product.mileage || "N/A"} miles
-								</span>
-							</div>
+							)}
 
-							<div className='bg-gray-700 p-4 rounded-lg'>
-								<div className='flex items-center mb-2'>
-									<Settings className='text-red-400 mr-2' size={20} />
-									<span className='text-gray-300'>Engine</span>
+							{(product.engine || isVehicleCategory(product.category)) && (
+								<div className='bg-gray-700 p-4 rounded-lg'>
+									<div className='flex items-center mb-2'>
+										<Settings className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Engine</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.engine || "V6"}
+									</span>
 								</div>
-								<span className='text-white font-semibold'>
-									{product.engine || "V6"}
-								</span>
-							</div>
+							)}
 
-							<div className='bg-gray-700 p-4 rounded-lg'>
-								<div className='flex items-center mb-2'>
-									<Users className='text-red-400 mr-2' size={20} />
-									<span className='text-gray-300'>Seats</span>
+							{(product.seats || isVehicleCategory(product.category)) && (
+								<div className='bg-gray-700 p-4 rounded-lg'>
+									<div className='flex items-center mb-2'>
+										<Users className='text-red-400 mr-2' size={20} />
+										<span className='text-gray-300'>Seats</span>
+									</div>
+									<span className='text-white font-semibold'>
+										{product.seats || "5"}
+									</span>
 								</div>
-								<span className='text-white font-semibold'>
-									{product.seats || "5"}
-								</span>
-							</div>
+							)}
 
 							{product.transmission && (
 								<div className='bg-gray-700 p-4 rounded-lg'>

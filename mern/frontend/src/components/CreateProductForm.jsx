@@ -1,10 +1,9 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { PlusCircle, Upload, Loader, X } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
-
-const categories = ["cars", "motorcycles", "jeans", "t-shirts", "shoes", "glasses", "jackets", "suits", "bags"];
+import { useCategoryStore } from "../stores/useCategoryStore";
 
 const CreateProductForm = () => {
 	const [newProduct, setNewProduct] = useState({
@@ -25,6 +24,11 @@ const CreateProductForm = () => {
 	});
 
 	const { createProduct, loading } = useProductStore();
+	const { categories, fetchAllCategories } = useCategoryStore();
+
+	useEffect(() => {
+		fetchAllCategories();
+	}, [fetchAllCategories]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -74,7 +78,24 @@ const CreateProductForm = () => {
 		}));
 	};
 
-	const isCarCategory = newProduct.category === "cars" || newProduct.category === "motorcycles";
+	// Check if the selected category is vehicle-related (cars, motorcycles, SUV, sedans, etc.)
+	const isVehicleCategory = newProduct.category && (
+		newProduct.category.toLowerCase().includes("car") ||
+		newProduct.category.toLowerCase().includes("motorcycle") ||
+		newProduct.category.toLowerCase().includes("suv") ||
+		newProduct.category.toLowerCase().includes("sedan") ||
+		newProduct.category.toLowerCase().includes("truck") ||
+		newProduct.category.toLowerCase().includes("vehicle") ||
+		categories.some(cat => 
+			cat.name.toLowerCase() === newProduct.category.toLowerCase() && 
+			(cat.name.toLowerCase().includes("car") || 
+			 cat.name.toLowerCase().includes("motorcycle") ||
+			 cat.name.toLowerCase().includes("suv") ||
+			 cat.name.toLowerCase().includes("sedan") ||
+			 cat.name.toLowerCase().includes("truck") ||
+			 cat.name.toLowerCase().includes("vehicle"))
+		)
+	);
 
 	return (
 		<motion.div
@@ -120,8 +141,8 @@ const CreateProductForm = () => {
 						>
 							<option value=''>Select a category</option>
 							{categories.map((category) => (
-								<option key={category} value={category}>
-									{category}
+								<option key={category._id} value={category.name}>
+									{category.name}
 								</option>
 							))}
 						</select>
@@ -163,7 +184,7 @@ const CreateProductForm = () => {
 					/>
 				</div>
 
-				{isCarCategory && (
+				{isVehicleCategory && (
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						<div>
 							<label htmlFor='brand' className='block text-sm font-medium text-gray-300'>
