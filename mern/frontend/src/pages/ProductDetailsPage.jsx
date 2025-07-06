@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Heart, Calendar, Settings, Gauge, Users, ShoppingCart, Fuel, Zap } from "lucide-react";
+import { ArrowLeft, Heart, Calendar, Settings, Gauge, Users, ShoppingCart, Fuel, Zap, Phone } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
 import { useCartStore } from "../stores/useCartStore";
 import { useUserStore } from "../stores/useUserStore";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../components/LoadingSpinner";
+import ContactForm from "../components/ContactForm";
 
 const ProductDetailsPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const [product, setProduct] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [showContactForm, setShowContactForm] = useState(false);
+	const [emailSent, setEmailSent] = useState(false);
 	const { products } = useProductStore();
 	const { addToFavorites } = useFavoriteStore();
 	const { addToCart } = useCartStore();
@@ -35,6 +38,23 @@ const ProductDetailsPage = () => {
 		}
 		addToFavorites(product);
 		toast.success("Added to favorites!");
+	};
+
+	const handleContactDealer = () => {
+		if (!user) {
+			toast.error("Please login to contact dealer", { id: "login" });
+			return;
+		}
+		setShowContactForm(true);
+	};
+
+	const handleCallDealer = () => {
+		const dealerPhone = process.env.REACT_APP_DEALER_PHONE || "(555) 123-4567";
+		window.open(`tel:${dealerPhone}`, '_self');
+	};
+
+	const handleEmailSent = () => {
+		setEmailSent(true);
 	};
 
 	useEffect(() => {
@@ -267,12 +287,22 @@ const ProductDetailsPage = () => {
 								</button>
 							</div>
 
-							<button
-								onClick={() => window.open('tel:(555)123-4567', '_self')}
-								className='w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300'
-							>
-								Contact Dealer: (555) 123-4567
-							</button>
+							{!emailSent ? (
+								<button
+									onClick={handleContactDealer}
+									className='w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300'
+								>
+									Contact Dealer
+								</button>
+							) : (
+								<button
+									onClick={handleCallDealer}
+									className='w-full flex items-center justify-center space-x-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300'
+								>
+									<Phone size={20} />
+									<span>Call Dealer Now</span>
+								</button>
+							)}
 						</div>
 
 						<div className='mt-6 text-center'>
@@ -283,6 +313,13 @@ const ProductDetailsPage = () => {
 					</motion.div>
 				</div>
 			</div>
+
+			<ContactForm
+				product={product}
+				isOpen={showContactForm}
+				onClose={() => setShowContactForm(false)}
+				onEmailSent={handleEmailSent}
+			/>
 		</div>
 	);
 };

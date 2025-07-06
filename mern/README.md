@@ -44,6 +44,11 @@ CLOUDINARY_API_SECRET=your_api_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development
+
+# Email configuration for contact inquiries
+ADMIN_EMAIL=your_admin_email@gmail.com
+ADMIN_EMAIL_PASSWORD=your_app_password
+DEALER_PHONE=+1234567890
 ```
 
 ### Run this app locally

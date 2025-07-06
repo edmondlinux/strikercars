@@ -1,9 +1,10 @@
 import toast from "react-hot-toast";
-import { Heart, Eye, Calendar, Gauge } from "lucide-react";
+import { Heart, Eye, Calendar, Gauge, Phone } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 import { useFavoriteStore } from "../stores/useFavoriteStore";
 import { useNavigate } from "react-router-dom";
-import { useEffect, memo } from "react";
+import { useEffect, memo, useState } from "react";
+import ContactForm from "./ContactForm";
 
 const CarCard = memo(({ product }) => {
 	// Early return if product is undefined or null
@@ -14,6 +15,8 @@ const CarCard = memo(({ product }) => {
 	const { user } = useUserStore();
 	const navigate = useNavigate();
 	const { addToFavorites, removeFromFavorites, isFavorite, getFavorites } = useFavoriteStore();
+	const [showContactForm, setShowContactForm] = useState(false);
+	const [emailSent, setEmailSent] = useState(false);
 
 	const isLiked = isFavorite(product._id);
 
@@ -28,7 +31,16 @@ const CarCard = memo(({ product }) => {
 			toast.error("Please login to contact dealer", { id: "login" });
 			return;
 		}
-		toast.success("Dealer contact information sent to your email!");
+		setShowContactForm(true);
+	};
+
+	const handleCallDealer = () => {
+		const dealerPhone = process.env.REACT_APP_DEALER_PHONE || "(555) 123-4567";
+		window.open(`tel:${dealerPhone}`, '_self');
+	};
+
+	const handleEmailSent = () => {
+		setEmailSent(true);
 	};
 
 	const handleToggleLike = () => {
@@ -105,13 +117,24 @@ const CarCard = memo(({ product }) => {
 					</div></div>
 
 					<div className='flex space-x-2'>
-						<button
-							className='flex-1 flex items-center justify-center rounded-lg bg-red-600 px-4 py-3 text-center text-sm font-medium
-							text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300'
-							onClick={handleContactDealer}
-						>
-							Contact Dealer
-						</button>
+						{!emailSent ? (
+							<button
+								className='flex-1 flex items-center justify-center rounded-lg bg-red-600 px-4 py-3 text-center text-sm font-medium
+								text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300'
+								onClick={handleContactDealer}
+							>
+								Contact Dealer
+							</button>
+						) : (
+							<button
+								className='flex-1 flex items-center justify-center rounded-lg bg-green-600 px-4 py-3 text-center text-sm font-medium
+								text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300'
+								onClick={handleCallDealer}
+							>
+								<Phone size={16} className="mr-2" />
+								Call Now
+							</button>
+						)}
 						<button 
 							onClick={handleViewDetails}
 							className='px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-300'
@@ -122,6 +145,12 @@ const CarCard = memo(({ product }) => {
 				</div>
 			</div>
 
+			<ContactForm
+				product={product}
+				isOpen={showContactForm}
+				onClose={() => setShowContactForm(false)}
+				onEmailSent={handleEmailSent}
+			/>
 	);
 });
 

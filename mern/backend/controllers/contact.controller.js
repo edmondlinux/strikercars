@@ -1,0 +1,116 @@
+
+import nodemailer from "nodemailer";
+
+// Create transporter for sending emails
+const createTransporter = () => {
+	return nodemailer.createTransporter({
+		service: 'gmail', // You can change this to your preferred email service
+		auth: {
+			user: process.env.ADMIN_EMAIL,
+			pass: process.env.ADMIN_EMAIL_PASSWORD, // Use app password for Gmail
+		},
+	});
+};
+
+export const sendInquiry = async (req, res) => {
+	try {
+		const { name, email, phone, message, productId, productName, productPrice } = req.body;
+
+		// Validate required fields
+		if (!name || !email || !phone || !productName) {
+			return res.status(400).json({
+				success: false,
+				message: "Please fill in all required fields"
+			});
+		}
+
+		const transporter = createTransporter();
+
+		// Email to admin
+		const adminMailOptions = {
+			from: process.env.ADMIN_EMAIL,
+			to: process.env.ADMIN_EMAIL,
+			subject: `New Vehicle Inquiry - ${productName}`,
+			html: `
+				<h2>New Vehicle Inquiry</h2>
+				<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+					<h3>Vehicle Details:</h3>
+					<p><strong>Vehicle:</strong> ${productName}</p>
+					<p><strong>Price:</strong> $${productPrice.toLocaleString()}</p>
+					<p><strong>Product ID:</strong> ${productId}</p>
+				</div>
+				<div style="background-color: #e8f4fd; padding: 20px; border-radius: 8px; margin: 20px 0;">
+					<h3>Customer Information:</h3>
+					<p><strong>Name:</strong> ${name}</p>
+					<p><strong>Email:</strong> ${email}</p>
+					<p><strong>Phone:</strong> ${phone}</p>
+				</div>
+				${message ? `
+				<div style="background-color: #fff2e8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+					<h3>Customer Message:</h3>
+					<p>${message}</p>
+				</div>
+				` : ''}
+				<p style="color: #666; font-size: 14px; margin-top: 30px;">
+					This inquiry was sent from your car dealership website.
+				</p>
+			`
+		};
+
+		// Email to customer
+		const customerMailOptions = {
+			from: process.env.ADMIN_EMAIL,
+			to: email,
+			subject: `Thank you for your inquiry about ${productName}`,
+			html: `
+				<h2>Thank you for your interest!</h2>
+				<p>Dear ${name},</p>
+				<p>Thank you for your inquiry about the <strong>${productName}</strong> priced at <strong>$${productPrice.toLocaleString()}</strong>.</p>
+				
+				<div style="background-color: #f0f8ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+					<h3>What's Next?</h3>
+					<p>Our sales team will review your inquiry and contact you shortly. In the meantime, you can:</p>
+					<ul>
+						<li>Call us directly at <strong>${process.env.DEALER_PHONE}</strong></li>
+						<li>Visit our showroom during business hours</li>
+						<li>Browse more vehicles on our website</li>
+					</ul>
+				</div>
+				
+				<div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+					<h3>Your Inquiry Details:</h3>
+					<p><strong>Vehicle:</strong> ${productName}</p>
+					<p><strong>Price:</strong> $${productPrice.toLocaleString()}</p>
+					<p><strong>Your Phone:</strong> ${phone}</p>
+					${message ? `<p><strong>Your Message:</strong> ${message}</p>` : ''}
+				</div>
+				
+				<p>We look forward to helping you find your perfect vehicle!</p>
+				<p>Best regards,<br>Strikers Auto Team</p>
+				
+				<hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+				<p style="color: #666; font-size: 12px;">
+					If you have any immediate questions, please call us at ${process.env.DEALER_PHONE} or email us at ${process.env.ADMIN_EMAIL}
+				</p>
+			`
+		};
+
+		// Send both emails
+		await Promise.all([
+			transporter.sendMail(adminMailOptions),
+			transporter.sendMail(customerMailOptions)
+		]);
+
+		res.status(200).json({
+			success: true,
+			message: "Inquiry sent successfully! Check your email for confirmation."
+		});
+
+	} catch (error) {
+		console.error("Error sending inquiry:", error);
+		res.status(500).json({
+			success: false,
+			message: "Failed to send inquiry. Please try again later."
+		});
+	}
+};
