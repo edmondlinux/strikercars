@@ -13,7 +13,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		fetchFeaturedProducts();
-	}, []); // Remove dependency to avoid unnecessary re-renders
+	}, [fetchFeaturedProducts]);
 	return (
 		<div className='relative min-h-screen text-white overflow-hidden bg-gray-900'>
 			{/* Background gradient */}

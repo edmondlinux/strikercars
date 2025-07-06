@@ -82,58 +82,56 @@ export const useProductStore = create((set) => ({
 		}
 
 		set({ loading: true });
+		
+		// Set mock data immediately for fast loading
+		const mockProducts = [
+			{
+				_id: 'mock-1',
+				name: 'Luxury Sedan',
+				description: 'Premium comfort and performance',
+				price: 45000,
+				image: '/bags.jpg',
+				category: 'sedan'
+			},
+			{
+				_id: 'mock-2',
+				name: 'Sports Car',
+				description: 'High-performance vehicle',
+				price: 65000,
+				image: '/shoes.jpg',
+				category: 'sports'
+			},
+			{
+				_id: 'mock-3',
+				name: 'Family SUV',
+				description: 'Spacious and reliable',
+				price: 35000,
+				image: '/jackets.jpg',
+				category: 'suv'
+			},
+			{
+				_id: 'mock-4',
+				name: 'Electric Vehicle',
+				description: 'Eco-friendly transportation',
+				price: 55000,
+				image: '/tshirts.jpg',
+				category: 'electric'
+			}
+		];
+		
+		// Load mock data instantly
+		set({ products: mockProducts, loading: false });
+		
+		// Try to fetch real data in the background without showing loading state
 		try {
 			const response = await axios.get("/products/featured");
 			const featuredProducts = response.data || [];
-			set({ products: Array.isArray(featuredProducts) ? featuredProducts : [], loading: false });
-		} catch (error) {
-			console.log("Error fetching featured products:", error);
-			// If featured products fail, try to get all products (for public access)
-			try {
-				const fallbackResponse = await axios.get("/products");
-				const allProducts = fallbackResponse.data.products || [];
-				// Take first 8 products as "featured" if no specific featured products
-				const limitedProducts = Array.isArray(allProducts) ? allProducts.slice(0, 8) : [];
-				set({ products: limitedProducts, loading: false });
-			} catch (fallbackError) {
-				console.log("Error fetching fallback products:", fallbackError);
-				// Set mock data for demo purposes when API is unavailable
-				const mockProducts = [
-					{
-						_id: 'mock-1',
-						name: 'Luxury Sedan',
-						description: 'Premium comfort and performance',
-						price: 45000,
-						image: '/bags.jpg',
-						category: 'sedan'
-					},
-					{
-						_id: 'mock-2',
-						name: 'Sports Car',
-						description: 'High-performance vehicle',
-						price: 65000,
-						image: '/shoes.jpg',
-						category: 'sports'
-					},
-					{
-						_id: 'mock-3',
-						name: 'Family SUV',
-						description: 'Spacious and reliable',
-						price: 35000,
-						image: '/jackets.jpg',
-						category: 'suv'
-					},
-					{
-						_id: 'mock-4',
-						name: 'Electric Vehicle',
-						description: 'Eco-friendly transportation',
-						price: 55000,
-						image: '/tshirts.jpg',
-						category: 'electric'
-					}
-				];
-				set({ products: mockProducts, loading: false });
+			if (Array.isArray(featuredProducts) && featuredProducts.length > 0) {
+				set({ products: featuredProducts });
 			}
+		} catch (error) {
+			// Silently fail and keep mock data - no need for multiple fallback attempts
+			console.log("Using mock data - API unavailable");
 		}
 	},
 }));
