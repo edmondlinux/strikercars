@@ -28,7 +28,7 @@ export const sendInquiry = async (req, res) => {
 
 		// Email to admin
 		const adminMailOptions = {
-			from: process.env.ADMIN_EMAIL,
+			from: email,
 			to: process.env.ADMIN_EMAIL,
 			subject: `New Vehicle Inquiry - ${productName}`,
 			html: `
