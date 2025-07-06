@@ -1,0 +1,287 @@
+useUserStore.js:51 
+            
+            
+           GET https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/api/auth/profile 401 (Unauthorized)
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+commitPassiveMountOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:18156
+commitPassiveMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:18129
+commitPassiveMountEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:18119
+commitPassiveMountEffects @ chunk-QT63QQJV.js?v=b8a20d1c:18109
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19490
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+useUserStore.js:51 
+            
+            
+           GET https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/api/auth/profile 401 (Unauthorized)
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+invokePassiveEffectMountInDEV @ chunk-QT63QQJV.js?v=b8a20d1c:18324
+invokeEffectsInDev @ chunk-QT63QQJV.js?v=b8a20d1c:19701
+commitDoubleInvokeEffectsInDEV @ chunk-QT63QQJV.js?v=b8a20d1c:19686
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19503
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+useUserStore.js:99 
+            
+            
+           GET https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/api/auth/profile 401 (Unauthorized)
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+wrap @ axios.js?v=b8a20d1c:8
+(anonymous) @ useUserStore.js:99
+Promise.then
+_request @ axios.js?v=b8a20d1c:2228
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+commitPassiveMountOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:18156
+commitPassiveMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:18129
+commitPassiveMountEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:18119
+commitPassiveMountEffects @ chunk-QT63QQJV.js?v=b8a20d1c:18109
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19490
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+useUserStore.js:54 Request failed with status code 401
+ProductDetailsPage.jsx:16 Uncaught ReferenceError: useNavigate is not defined
+    at ProductDetailsPage (ProductDetailsPage.jsx:16:19)
+    at renderWithHooks (chunk-QT63QQJV.js?v=b8a20d1c:11548:26)
+    at mountIndeterminateComponent (chunk-QT63QQJV.js?v=b8a20d1c:14926:21)
+    at beginWork (chunk-QT63QQJV.js?v=b8a20d1c:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-QT63QQJV.js?v=b8a20d1c:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-QT63QQJV.js?v=b8a20d1c:3699:24)
+    at invokeGuardedCallback (chunk-QT63QQJV.js?v=b8a20d1c:3733:39)
+    at beginWork$1 (chunk-QT63QQJV.js?v=b8a20d1c:19765:15)
+    at performUnitOfWork (chunk-QT63QQJV.js?v=b8a20d1c:19198:20)
+    at workLoopSync (chunk-QT63QQJV.js?v=b8a20d1c:19137:13)
+ProductDetailsPage @ ProductDetailsPage.jsx:16
+renderWithHooks @ chunk-QT63QQJV.js?v=b8a20d1c:11548
+mountIndeterminateComponent @ chunk-QT63QQJV.js?v=b8a20d1c:14926
+beginWork @ chunk-QT63QQJV.js?v=b8a20d1c:15914
+callCallback2 @ chunk-QT63QQJV.js?v=b8a20d1c:3674
+invokeGuardedCallbackDev @ chunk-QT63QQJV.js?v=b8a20d1c:3699
+invokeGuardedCallback @ chunk-QT63QQJV.js?v=b8a20d1c:3733
+beginWork$1 @ chunk-QT63QQJV.js?v=b8a20d1c:19765
+performUnitOfWork @ chunk-QT63QQJV.js?v=b8a20d1c:19198
+workLoopSync @ chunk-QT63QQJV.js?v=b8a20d1c:19137
+renderRootSync @ chunk-QT63QQJV.js?v=b8a20d1c:19116
+performSyncWorkOnRoot @ chunk-QT63QQJV.js?v=b8a20d1c:18874
+flushSyncCallbacks @ chunk-QT63QQJV.js?v=b8a20d1c:9119
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:18627
+XMLHttpRequest.send
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+wrap @ axios.js?v=b8a20d1c:8
+(anonymous) @ useUserStore.js:99
+Promise.then
+_request @ axios.js?v=b8a20d1c:2228
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+commitPassiveMountOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:18156
+commitPassiveMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:18129
+commitPassiveMountEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:18119
+commitPassiveMountEffects @ chunk-QT63QQJV.js?v=b8a20d1c:18109
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19490
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+ProductDetailsPage.jsx:16 Uncaught ReferenceError: useNavigate is not defined
+    at ProductDetailsPage (ProductDetailsPage.jsx:16:19)
+    at renderWithHooks (chunk-QT63QQJV.js?v=b8a20d1c:11548:26)
+    at mountIndeterminateComponent (chunk-QT63QQJV.js?v=b8a20d1c:14926:21)
+    at beginWork (chunk-QT63QQJV.js?v=b8a20d1c:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-QT63QQJV.js?v=b8a20d1c:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-QT63QQJV.js?v=b8a20d1c:3699:24)
+    at invokeGuardedCallback (chunk-QT63QQJV.js?v=b8a20d1c:3733:39)
+    at beginWork$1 (chunk-QT63QQJV.js?v=b8a20d1c:19765:15)
+    at performUnitOfWork (chunk-QT63QQJV.js?v=b8a20d1c:19198:20)
+    at workLoopSync (chunk-QT63QQJV.js?v=b8a20d1c:19137:13)
+ProductDetailsPage @ ProductDetailsPage.jsx:16
+renderWithHooks @ chunk-QT63QQJV.js?v=b8a20d1c:11548
+mountIndeterminateComponent @ chunk-QT63QQJV.js?v=b8a20d1c:14926
+beginWork @ chunk-QT63QQJV.js?v=b8a20d1c:15914
+callCallback2 @ chunk-QT63QQJV.js?v=b8a20d1c:3674
+invokeGuardedCallbackDev @ chunk-QT63QQJV.js?v=b8a20d1c:3699
+invokeGuardedCallback @ chunk-QT63QQJV.js?v=b8a20d1c:3733
+beginWork$1 @ chunk-QT63QQJV.js?v=b8a20d1c:19765
+performUnitOfWork @ chunk-QT63QQJV.js?v=b8a20d1c:19198
+workLoopSync @ chunk-QT63QQJV.js?v=b8a20d1c:19137
+renderRootSync @ chunk-QT63QQJV.js?v=b8a20d1c:19116
+recoverFromConcurrentError @ chunk-QT63QQJV.js?v=b8a20d1c:18736
+performSyncWorkOnRoot @ chunk-QT63QQJV.js?v=b8a20d1c:18879
+flushSyncCallbacks @ chunk-QT63QQJV.js?v=b8a20d1c:9119
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:18627
+XMLHttpRequest.send
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+wrap @ axios.js?v=b8a20d1c:8
+(anonymous) @ useUserStore.js:99
+Promise.then
+_request @ axios.js?v=b8a20d1c:2228
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+commitPassiveMountOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:18156
+commitPassiveMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:18129
+commitPassiveMountEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:18119
+commitPassiveMountEffects @ chunk-QT63QQJV.js?v=b8a20d1c:18109
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19490
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+useUserStore.js:99 The above error occurred in the <ProductDetailsPage> component:
+
+    at ProductDetailsPage (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/src/pages/ProductDetailsPage.jsx:31:18)
+    at RenderedRoute (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=b8a20d1c:4028:5)
+    at Routes (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=b8a20d1c:4467:5)
+    at main
+    at div
+    at div
+    at _a (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/node_modules/.vite/deps/react-helmet-async.js?v=b8a20d1c:624:5)
+    at App (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/src/App.jsx:41:45)
+    at Router (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=b8a20d1c:4410:15)
+    at BrowserRouter (https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=b8a20d1c:5155:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+logCapturedError @ chunk-QT63QQJV.js?v=b8a20d1c:14032
+update.callback @ chunk-QT63QQJV.js?v=b8a20d1c:14052
+callCallback @ chunk-QT63QQJV.js?v=b8a20d1c:11248
+commitUpdateQueue @ chunk-QT63QQJV.js?v=b8a20d1c:11265
+commitLayoutEffectOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:17093
+commitLayoutMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:17980
+commitLayoutEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:17969
+commitLayoutEffects @ chunk-QT63QQJV.js?v=b8a20d1c:17920
+commitRootImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19353
+commitRoot @ chunk-QT63QQJV.js?v=b8a20d1c:19277
+performSyncWorkOnRoot @ chunk-QT63QQJV.js?v=b8a20d1c:18895
+flushSyncCallbacks @ chunk-QT63QQJV.js?v=b8a20d1c:9119
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:18627
+XMLHttpRequest.send
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+wrap @ axios.js?v=b8a20d1c:8
+(anonymous) @ useUserStore.js:99
+Promise.then
+_request @ axios.js?v=b8a20d1c:2228
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+commitPassiveMountOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:18156
+commitPassiveMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:18129
+commitPassiveMountEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:18119
+commitPassiveMountEffects @ chunk-QT63QQJV.js?v=b8a20d1c:18109
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19490
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+chunk-QT63QQJV.js?v=b8a20d1c:9129 Uncaught ReferenceError: useNavigate is not defined
+    at ProductDetailsPage (ProductDetailsPage.jsx:16:19)
+    at renderWithHooks (chunk-QT63QQJV.js?v=b8a20d1c:11548:26)
+    at mountIndeterminateComponent (chunk-QT63QQJV.js?v=b8a20d1c:14926:21)
+    at beginWork (chunk-QT63QQJV.js?v=b8a20d1c:15914:22)
+    at beginWork$1 (chunk-QT63QQJV.js?v=b8a20d1c:19753:22)
+    at performUnitOfWork (chunk-QT63QQJV.js?v=b8a20d1c:19198:20)
+    at workLoopSync (chunk-QT63QQJV.js?v=b8a20d1c:19137:13)
+    at renderRootSync (chunk-QT63QQJV.js?v=b8a20d1c:19116:15)
+    at recoverFromConcurrentError (chunk-QT63QQJV.js?v=b8a20d1c:18736:28)
+    at performSyncWorkOnRoot (chunk-QT63QQJV.js?v=b8a20d1c:18879:28)
+ProductDetailsPage @ ProductDetailsPage.jsx:16
+renderWithHooks @ chunk-QT63QQJV.js?v=b8a20d1c:11548
+mountIndeterminateComponent @ chunk-QT63QQJV.js?v=b8a20d1c:14926
+beginWork @ chunk-QT63QQJV.js?v=b8a20d1c:15914
+beginWork$1 @ chunk-QT63QQJV.js?v=b8a20d1c:19753
+performUnitOfWork @ chunk-QT63QQJV.js?v=b8a20d1c:19198
+workLoopSync @ chunk-QT63QQJV.js?v=b8a20d1c:19137
+renderRootSync @ chunk-QT63QQJV.js?v=b8a20d1c:19116
+recoverFromConcurrentError @ chunk-QT63QQJV.js?v=b8a20d1c:18736
+performSyncWorkOnRoot @ chunk-QT63QQJV.js?v=b8a20d1c:18879
+flushSyncCallbacks @ chunk-QT63QQJV.js?v=b8a20d1c:9119
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:18627
+XMLHttpRequest.send
+dispatchXhrRequest @ axios.js?v=b8a20d1c:1680
+xhr @ axios.js?v=b8a20d1c:1560
+dispatchRequest @ axios.js?v=b8a20d1c:2016
+_request @ axios.js?v=b8a20d1c:2221
+request @ axios.js?v=b8a20d1c:2122
+wrap @ axios.js?v=b8a20d1c:8
+(anonymous) @ useUserStore.js:99
+Promise.then
+_request @ axios.js?v=b8a20d1c:2228
+request @ axios.js?v=b8a20d1c:2122
+Axios.<computed> @ axios.js?v=b8a20d1c:2240
+wrap @ axios.js?v=b8a20d1c:8
+checkAuth @ useUserStore.js:51
+(anonymous) @ App.jsx:30
+commitHookEffectListMount @ chunk-QT63QQJV.js?v=b8a20d1c:16915
+commitPassiveMountOnFiber @ chunk-QT63QQJV.js?v=b8a20d1c:18156
+commitPassiveMountEffects_complete @ chunk-QT63QQJV.js?v=b8a20d1c:18129
+commitPassiveMountEffects_begin @ chunk-QT63QQJV.js?v=b8a20d1c:18119
+commitPassiveMountEffects @ chunk-QT63QQJV.js?v=b8a20d1c:18109
+flushPassiveEffectsImpl @ chunk-QT63QQJV.js?v=b8a20d1c:19490
+flushPassiveEffects @ chunk-QT63QQJV.js?v=b8a20d1c:19447
+(anonymous) @ chunk-QT63QQJV.js?v=b8a20d1c:19328
+workLoop @ chunk-QT63QQJV.js?v=b8a20d1c:197
+flushWork @ chunk-QT63QQJV.js?v=b8a20d1c:176
+performWorkUntilDeadline @ chunk-QT63QQJV.js?v=b8a20d1c:384Understand this error
+useUserStore.js:99 
+            
+            
+           GET https://bb6db73e-df8e-4d59-bcc1-793f63151717-00-2s218bnwmxgzm.picard.replit.dev/api/auth/profile 401 (Unauthorized)
