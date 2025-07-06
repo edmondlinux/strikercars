@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 import { Heart, Eye, Calendar, Gauge } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const CarCard = ({ car }) => {
 	const { user } = useUserStore();
@@ -86,12 +85,9 @@ const CarCard = ({ car }) => {
 						>
 							Contact Dealer
 						</button>
-						<Link 
-							to={`/product/${car._id}`}
-							className='px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-300 text-center'
-						>
+						<button className='px-4 py-3 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-all duration-300'>
 							View Details
-						</Link>
+						</button>
 					</div>
 				</div>
 			</div>
