@@ -14,9 +14,16 @@ export const getAllProducts = async (req, res) => {
 
 export const getFeaturedProducts = async (req, res) => {
 	try {
-		let featuredProducts = await redis.get("featured_products");
-		if (featuredProducts) {
-			return res.json(JSON.parse(featuredProducts));
+		let featuredProducts;
+		
+		// Try to get from Redis, but don't fail if Redis is down
+		try {
+			featuredProducts = await redis.get("featured_products");
+			if (featuredProducts) {
+				return res.json(JSON.parse(featuredProducts));
+			}
+		} catch (redisError) {
+			console.log("Redis error, falling back to MongoDB:", redisError.message);
 		}
 
 		// if not in redis, fetch from mongodb
@@ -24,13 +31,17 @@ export const getFeaturedProducts = async (req, res) => {
 		// which is good for performance
 		featuredProducts = await Product.find({ isFeatured: true }).lean();
 
-		if (!featuredProducts) {
-			return res.status(404).json({ message: "No featured products found" });
+		if (!featuredProducts || featuredProducts.length === 0) {
+			// If no featured products, return first 3 products instead
+			featuredProducts = await Product.find({}).limit(3).lean();
 		}
 
-		// store in redis for future quick access
-
-		await redis.set("featured_products", JSON.stringify(featuredProducts));
+		// Try to store in redis for future quick access, but don't fail if Redis is down
+		try {
+			await redis.set("featured_products", JSON.stringify(featuredProducts));
+		} catch (redisError) {
+			console.log("Redis error when storing, continuing anyway:", redisError.message);
+		}
 
 		res.json(featuredProducts);
 	} catch (error) {

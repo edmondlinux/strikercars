@@ -80,8 +80,15 @@ export const useProductStore = create((set) => ({
 			const response = await axios.get("/products/featured");
 			set({ products: response.data, loading: false });
 		} catch (error) {
-			set({ error: "Failed to fetch products", loading: false });
 			console.log("Error fetching featured products:", error);
+			// Fallback to regular products if featured products fail
+			try {
+				const fallbackResponse = await axios.get("/products");
+				set({ products: fallbackResponse.data.products || [], loading: false });
+			} catch (fallbackError) {
+				set({ error: "Failed to fetch products", loading: false });
+				console.log("Error fetching fallback products:", fallbackError);
+			}
 		}
 	},
 }));
