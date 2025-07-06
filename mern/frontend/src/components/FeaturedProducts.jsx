@@ -40,7 +40,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 		<div className='py-12'>
 			<div className='container mx-auto px-4'>
 				<h2 className='text-center text-5xl sm:text-6xl font-bold text-red-400 mb-4'>Featured Cars</h2>
-				
+
 				{displayProducts.length === 0 ? (
 					<div className='text-center py-12'>
 						<p className='text-gray-400 text-lg'>No featured cars available at the moment</p>
@@ -63,7 +63,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 											/>
 											<div className='absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 hover:opacity-100'>
 												<button
-													onClick={() => navigate(`/products/${product._id}`)}
+													onClick={() => navigate(`/product/${product._id}`)}
 													className='bg-red-600 hover:bg-red-700 text-white p-3 rounded-full transition-colors duration-300 mr-2'
 													title="View Details"
 												>
@@ -88,7 +88,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 											</p>
 											<div className='flex space-x-2'>
 												<button
-													onClick={() => navigate(`/products/${product._id}`)}
+													onClick={() => navigate(`/product/${product._id}`)}
 													className='flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-300 
 													flex items-center justify-center'
 												>
