@@ -25,12 +25,9 @@ const HomePage = () => {
 
 			<div className='relative z-10'>
 				<HeroSection />
-			
-				<CarCategories />
-				<WhyChooseUs />
-				<Testimonials />
-				<CallToAction />
-				
+
+
+
 				{/* Featured Products Section */}
 				<section className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 					<div className="text-center mb-12">
@@ -41,7 +38,7 @@ const HomePage = () => {
 							Discover our handpicked selection of premium vehicles
 						</p>
 					</div>
-					
+
 					{loading ? (
 						<div className="flex justify-center items-center py-16">
 							<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500"></div>
@@ -50,6 +47,13 @@ const HomePage = () => {
 						<ProductGrid products={products} viewMode="grid" />
 					)}
 				</section>
+			
+				<CarCategories />
+				<WhyChooseUs />
+				<Testimonials />
+				<CallToAction />
+				
+				
 			</div>
 		</div>
 	);
