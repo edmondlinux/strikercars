@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const CarCard = ({ product }) => {
+	// Early return if product is undefined or null
+	if (!product || !product._id) {
+		return null;
+	}
+
 	const { user } = useUserStore();
 	const navigate = useNavigate();
 	const { addToFavorites, removeFromFavorites, isFavorite, getFavorites } = useFavoriteStore();
