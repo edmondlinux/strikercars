@@ -15,13 +15,53 @@ const productSchema = new mongoose.Schema(
 			min: 0,
 			required: true,
 		},
+		images: [{
+			type: String,
+			required: false,
+		}],
 		image: {
 			type: String,
-			required: [true, "Image is required"],
+			required: false,
 		},
 		category: {
 			type: String,
 			required: true,
+		},
+		year: {
+			type: Number,
+			required: false,
+		},
+		mileage: {
+			type: String,
+			required: false,
+		},
+		engine: {
+			type: String,
+			required: false,
+		},
+		seats: {
+			type: Number,
+			required: false,
+		},
+		transmission: {
+			type: String,
+			required: false,
+		},
+		fuelType: {
+			type: String,
+			required: false,
+		},
+		condition: {
+			type: String,
+			required: false,
+		},
+		brand: {
+			type: String,
+			required: false,
+		},
+		model: {
+			type: String,
+			required: false,
 		},
 		isFeatured: {
 			type: Boolean,

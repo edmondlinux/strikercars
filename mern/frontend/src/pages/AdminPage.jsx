@@ -28,29 +28,32 @@ const AdminPage = () => {
 	}, [fetchAllProducts, fetchAllCategories]);
 
 	return (
-		<div className='min-h-screen relative overflow-hidden'>
-			<div className='relative z-10 container mx-auto px-4 py-16'>
-				<motion.h1
-					className='text-4xl font-bold mb-8 text-emerald-400 text-center'
+		<div className='min-h-screen relative overflow-hidden bg-gray-900'>
+			<div className='relative z-10 container mx-auto px-4 pt-24 pb-16'>
+				<motion.div
+					className='bg-gradient-to-r from-emerald-800 to-emerald-600 rounded-xl p-8 mb-8 shadow-2xl'
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 				>
-					Admin Dashboard
-				</motion.h1>
+					<h1 className='text-4xl font-bold text-white text-center mb-2'>
+						Admin Dashboard
+					</h1>
+					<p className='text-emerald-100 text-center'>Manage your products, categories, and analytics</p>
+				</motion.div>
 
-				<div className='flex justify-center mb-8'>
+				<div className='flex flex-wrap justify-center gap-4 mb-8'>
 					{tabs.map((tab) => (
 						<button
 							key={tab.id}
 							onClick={() => setActiveTab(tab.id)}
-							className={`flex items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${
+							className={`flex items-center px-6 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg ${
 								activeTab === tab.id
-									? "bg-emerald-600 text-white"
-									: "bg-gray-700 text-gray-300 hover:bg-gray-600"
+									? "bg-emerald-600 text-white shadow-emerald-500/50 scale-105"
+									: "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:shadow-gray-700/50 hover:scale-102"
 							}`}
 						>
-							<tab.icon className='mr-2 h-5 w-5' />
+							<tab.icon className='mr-3 h-5 w-5' />
 							{tab.label}
 						</button>
 					))}

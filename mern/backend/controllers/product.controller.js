@@ -52,20 +52,37 @@ export const getFeaturedProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
 	try {
-		const { name, description, price, image, category } = req.body;
+		const { name, description, price, images, category, year, mileage, engine, seats, transmission, fuelType, condition, brand, model } = req.body;
 
-		let cloudinaryResponse = null;
+		let uploadedImages = [];
 
-		if (image) {
-			cloudinaryResponse = await cloudinary.uploader.upload(image, { folder: "products" });
+		if (images && images.length > 0) {
+			for (const image of images) {
+				try {
+					const cloudinaryResponse = await cloudinary.uploader.upload(image, { folder: "products" });
+					uploadedImages.push(cloudinaryResponse.secure_url);
+				} catch (uploadError) {
+					console.log("Error uploading image:", uploadError);
+				}
+			}
 		}
 
 		const product = await Product.create({
 			name,
 			description,
 			price,
-			image: cloudinaryResponse?.secure_url ? cloudinaryResponse.secure_url : "",
+			images: uploadedImages,
+			image: uploadedImages[0] || "", // Keep first image as main image for backward compatibility
 			category,
+			year,
+			mileage,
+			engine,
+			seats,
+			transmission,
+			fuelType,
+			condition,
+			brand,
+			model,
 		});
 
 		res.status(201).json(product);
