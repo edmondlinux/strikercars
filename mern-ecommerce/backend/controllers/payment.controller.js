@@ -142,6 +142,17 @@ async function createNewCoupon(userId) {
 	return newCoupon;
 }
 
+export const checkoutCancel = async (req, res) => {
+	try {
+		res.status(200).json({
+			message: "Payment was cancelled",
+		});
+	} catch (error) {
+		console.error("Error processing cancelled checkout:", error);
+		res.status(500).json({ message: "Error processing cancelled checkout", error: error.message });
+	}
+};
+
 export const getUserOrders = async (req, res) => {
 	try {
 		const orders = await Order.find({ user: req.user._id })
