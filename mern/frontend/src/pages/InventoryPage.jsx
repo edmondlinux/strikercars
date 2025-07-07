@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Filter, Grid, List } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
+import { useCategoryStore } from "../stores/useCategoryStore";
 import ProductCard from "../components/ProductCard";
 import CategoryFilter from "../components/CategoryFilter";
 import ProductGrid from "../components/ProductGrid";
 
 const InventoryPage = () => {
 	const { fetchAllProducts, products, loading } = useProductStore();
+	const { categories, fetchAllCategories, loading: categoriesLoading } = useCategoryStore();
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [sortBy, setSortBy] = useState("name");
@@ -17,7 +19,8 @@ const InventoryPage = () => {
 
 	useEffect(() => {
 		fetchAllProducts();
-	}, [fetchAllProducts]);
+		fetchAllCategories();
+	}, [fetchAllProducts, fetchAllCategories]);
 
 	// Filter and sort products
 	const filteredProducts = products
@@ -41,10 +44,10 @@ const InventoryPage = () => {
 			}
 		});
 
-	// Get unique categories
-	const categories = ["all", ...new Set(products?.map(product => product.category) || [])];
+	// Get categories from database
+	const categoryOptions = ["all", ...categories.map(category => category.name)];
 
-	if (loading) {
+	if (loading || categoriesLoading) {
 		return (
 			<div className="min-h-screen flex items-center justify-center">
 				<div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-500"></div>
@@ -96,7 +99,7 @@ const InventoryPage = () => {
 							onChange={(e) => setSelectedCategory(e.target.value)}
 							className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-red-500"
 						>
-							{categories.map((category) => (
+							{categoryOptions.map((category) => (
 								<option key={category} value={category}>
 									{category === "all" ? "All Categories" : category.charAt(0).toUpperCase() + category.slice(1)}
 								</option>
