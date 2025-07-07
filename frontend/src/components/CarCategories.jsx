@@ -51,7 +51,7 @@ const CarCategories = () => {
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<Link to={`/category/${category.href}`}>
+							<Link to={`/category/${category.name}`}>
 								<div className='relative overflow-hidden rounded-lg bg-gray-800 shadow-lg'>
 									{category.image ? (
 										<img
