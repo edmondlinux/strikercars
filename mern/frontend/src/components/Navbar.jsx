@@ -80,9 +80,16 @@ const Navbar = () => {
 						>
 							Financing
 						</Link>
+						
+						<Link
+							to="/payment-methods"
+							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium"
+						>
+							Payments
+						</Link>
 
 						<Link
-							to="/contact"
+							to="/contact-info"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium"
 						>
 							Contact
@@ -150,7 +157,7 @@ const Navbar = () => {
 							Inventory
 						</Link>
 						<Link
-							to="/payments"
+							to="/payment-methods"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium py-2"
 							onClick={closeMenu}
 						>
@@ -158,7 +165,7 @@ const Navbar = () => {
 						</Link>
 
 						<Link
-							to="/contact"
+							to="/contact-info"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium py-2"
 							onClick={closeMenu}
 						>
