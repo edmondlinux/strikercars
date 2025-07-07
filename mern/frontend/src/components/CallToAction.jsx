@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Phone, MessageCircle, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+
 const CallToAction = () => {
 	return (
 		<section className='py-20 px-4 sm:px-6 lg:px-8'>
@@ -43,12 +44,12 @@ const CallToAction = () => {
 							<div className='flex flex-col items-center'>
 								<Phone className='mb-4' size={32} />
 								<h3 className='font-semibold mb-2'>Call Us Now</h3>
-								<p className='text-red-100'>{import.meta.env.VITE_DEALER_PHONE || "(555) 123-4567"}</p>
+								<p className='text-red-100'>+1 (281) 628-1854</p>
 							</div>
 							<div className='flex flex-col items-center'>
 								<MessageCircle className='mb-4' size={32} />
 								<h3 className='font-semibold mb-2'>Text Us</h3>
-								<p className='text-red-100'>(555) 123-TEXT</p>
+								<p className='text-red-100'>+1 (281) 628-1854</p>
 							</div>
 							<div className='flex flex-col items-center'>
 								<MapPin className='mb-4' size={32} />

@@ -33,11 +33,11 @@ const Navbar = () => {
 					<div className="flex items-center space-x-6">
 						<div className="flex items-center space-x-2">
 							<Phone size={14} />
-							<span>{import.meta.env.VITE_DEALER_PHONE || "(555) 123-4567"}</span>
+							<span>+1 (281) 628-1854</span>
 						</div>
 						<div className="flex items-center space-x-2">
 							<MapPin size={14} />
-							<span>123 Auto Street, Car City, CC 12345</span>
+							<span></span>
 						</div>
 					</div>
 					<div className="text-red-400 font-medium">
@@ -150,11 +150,11 @@ const Navbar = () => {
 							Inventory
 						</Link>
 						<Link
-							to="/financing"
+							to="/payments"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium py-2"
 							onClick={closeMenu}
 						>
-							Financing
+							Payments
 						</Link>
 
 						<Link

@@ -161,7 +161,7 @@ const ContactForm = ({ product, isOpen, onClose, onEmailSent }) => {
 								onChange={handleChange}
 								required
 								className="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-500"
-								placeholder="(555) 123-4567"
+								placeholder="(281) 628-1854"
 							/>
 						</div>
 					</div>

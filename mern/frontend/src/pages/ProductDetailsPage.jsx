@@ -45,7 +45,7 @@ const ProductDetailsPage = () => {
 	};
 
 	const handleCallDealer = () => {
-		const dealerPhone = import.meta.env.VITE_DEALER_PHONE || "(555) 123-4567";
+		const dealerPhone = "+1 (281) 628-1854";
 		window.open(`tel:${dealerPhone}`, '_self');
 	};
 
