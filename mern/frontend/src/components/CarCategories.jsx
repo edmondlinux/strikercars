@@ -1,15 +1,33 @@
-
 import { motion } from "framer-motion";
 import { useCategoryStore } from "../stores/useCategoryStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const CarCategories = () => {
 	const { categories, fetchAllCategories } = useCategoryStore();
+	const [showAll, setShowAll] = useState(false);
+	const [displayedCategories, setDisplayedCategories] = useState([]);
+
+	const INITIAL_DISPLAY_COUNT = 5;
 
 	useEffect(() => {
 		fetchAllCategories();
 	}, [fetchAllCategories]);
+
+	useEffect(() => {
+		if (categories.length > 0) {
+			const categoriesToShow = showAll 
+				? categories 
+				: categories.slice(0, INITIAL_DISPLAY_COUNT);
+			setDisplayedCategories(categoriesToShow);
+		}
+	}, [categories, showAll]);
+
+	const handleToggleView = () => {
+		setShowAll(!showAll);
+	};
+
+	const shouldShowViewMoreButton = categories.length > INITIAL_DISPLAY_COUNT;
 
 	return (
 		<div className='py-16'>
@@ -22,9 +40,8 @@ const CarCategories = () => {
 				>
 					Browse by Category
 				</motion.h2>
-
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-					{categories.map((category, index) => (
+					{displayedCategories.map((category, index) => (
 						<motion.div
 							key={category._id}
 							className='relative group cursor-pointer'
@@ -67,6 +84,46 @@ const CarCategories = () => {
 						</motion.div>
 					))}
 				</div>
+
+				{shouldShowViewMoreButton && (
+					<motion.div
+						className='text-center mt-12'
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.3 }}
+					>
+						<button
+							onClick={handleToggleView}
+							className='px-8 py-3 bg-red-600 hover:bg-red-400 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'
+						>
+							{showAll ? (
+								<>
+									<span>Show Less</span>
+									<svg 
+										className='inline-block ml-2 w-4 h-4 transform rotate-180' 
+										fill='none' 
+										stroke='currentColor' 
+										viewBox='0 0 24 24'
+									>
+										<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+									</svg>
+								</>
+							) : (
+								<>
+									<span>View More ({categories.length - INITIAL_DISPLAY_COUNT} more)</span>
+									<svg 
+										className='inline-block ml-2 w-4 h-4' 
+										fill='none' 
+										stroke='currentColor' 
+										viewBox='0 0 24 24'
+									>
+										<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+									</svg>
+								</>
+							)}
+						</button>
+					</motion.div>
+				)}
 			</div>
 		</div>
 	);

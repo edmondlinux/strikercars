@@ -74,12 +74,7 @@ const Navbar = () => {
 						>
 							Inventory
 						</Link>
-						<Link
-							to="/financing"
-							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium"
-						>
-							Financing
-						</Link>
+						
 						
 						<Link
 							to="/payment"
