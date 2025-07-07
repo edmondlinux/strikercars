@@ -2,6 +2,9 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Car } from "lucide-react";
 
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, Clock, Car } from "lucide-react";
+
 const ContactInfoPage = () => {
 	return (
 		<div className="min-h-screen bg-gray-900 pt-20">
