@@ -5,6 +5,7 @@ entrypoint = "index.html"
 
 [nix]
 channel = "stable-24_05"
+packages = ["python311Packages.ray"]
 
 [unitTest]
 language = "nodejs"
@@ -42,11 +43,11 @@ mode = "parallel"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd mern/backend && npm install && npm start"
+args = "cd backend && npm install && npm start"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd mern/frontend && npm install && npm run dev"
+args = "cd frontend && npm install && npm run dev"
 
 [[workflows.workflow]]
 name = "Backend"

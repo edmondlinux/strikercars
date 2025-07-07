@@ -1,17 +1,65 @@
-## Running React on Replit
+<h1 align="center">E-Commerce Store 🛒</h1>
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
+![Demo App](/frontend/public/screenshot-for-readme.png)
 
-[Vite](https://vitejs.dev/) is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
+[Video Tutorial on Youtube](https://youtu.be/sX57TLIPNx8)
 
-Using the two in conjunction is one of the fastest ways to build a web app.
+About This Course:
 
-### Getting Started
-- Hit run
-- Edit [App.jsx](#src/App.jsx) and watch it live update!
+-   🚀 Project Setup
+-   🗄️ MongoDB & Redis Integration
+-   💳 Stripe Payment Setup
+-   🔐 Robust Authentication System
+-   🔑 JWT with Refresh/Access Tokens
+-   📝 User Signup & Login
+-   🛒 E-Commerce Core
+-   📦 Product & Category Management
+-   🛍️ Shopping Cart Functionality
+-   💰 Checkout with Stripe
+-   🏷️ Coupon Code System
+-   👑 Admin Dashboard
+-   📊 Sales Analytics
+-   🎨 Design with Tailwind
+-   🛒 Cart & Checkout Process
+-   🔒 Security
+-   🛡️ Data Protection
+-   🚀Caching with Redis
+-   ⌛ And a lot more...
 
-By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the [configuration file](#.replit). Here are the vite docs for [serving production websites](https://vitejs.dev/guide/build.html)
+### Setup .env file
 
-### Typescript
+```bash
+PORT=5000
+MONGO_URI=your_mongo_uri
 
-Just rename any file from `.jsx` to `.tsx`. You can also try our [TypeScript Template](https://replit.com/@replit/React-TypeScript)
+UPSTASH_REDIS_URL=your_redis_url
+
+ACCESS_TOKEN_SECRET=your_access_token_secret
+REFRESH_TOKEN_SECRET=your_refresh_token_secret
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+STRIPE_SECRET_KEY=your_stripe_secret_key
+CLIENT_URL=http://localhost:5173
+NODE_ENV=development
+
+# SMTP Email Configuration for Contact Inquiries
+SMTP_EMAIL=your-business@gmail.com
+SMTP_APP_PASSWORD=your_16_character_app_password
+BUSINESS_EMAIL=your-business@gmail.com
+BUSINESS_PHONE=+1234567890
+```
+
+### Run this app locally
+
+```shell
+npm run build
+```
+
+### Start the app
+
+```shell
+npm run start
+```

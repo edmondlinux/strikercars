@@ -19,9 +19,9 @@ const HeroSection = () => {
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
 	const lines = [
-		{ text: "DRIVE YOUR ", color: "text-white" },
-		{ text: "DREAM CAR ", color: "text-red-500" },
-		{ text: "TODAY", color: "text-white" },
+		{ text: "Cheap Unknown", color: "text-white" },
+		{ text: "Registration Strikers ", color: "text-red-500" },
+		{ text: "Cars for sale", color: "text-white" },
 	];
 
 	useEffect(() => {
