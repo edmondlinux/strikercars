@@ -22,6 +22,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import CartPage from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
 import { useCartStore } from "./stores/useCartStore";
+import PWAInstallPrompt from "./components/PWAInstallPrompt";
 
 function App() {
 	const { user, checkAuth, checkingAuth } = useUserStore();
@@ -35,6 +36,21 @@ function App() {
 		if (!user) return;
 		getCartItems();
 	}, [getCartItems, user]);
+
+	useEffect(() => {
+		// Register service worker for PWA
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/sw.js')
+					.then((registration) => {
+						console.log('SW registered: ', registration);
+					})
+					.catch((registrationError) => {
+						console.log('SW registration failed: ', registrationError);
+					});
+			});
+		}
+	}, []);
 
 	if (checkingAuth) return <LoadingSpinner />;
 
@@ -73,6 +89,7 @@ function App() {
 			</div>
 
 			<Toaster />
+			<PWAInstallPrompt />
 		</div>
 	);
 }
