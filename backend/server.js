@@ -47,3 +47,13 @@ app.listen(PORT, () => {
 	console.log("Server is running on http://localhost:" + PORT);
 	connectDB();
 });
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+	console.log('Unhandled Promise Rejection:', err.message);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (err) => {
+	console.log('Uncaught Exception:', err.message);
+});
