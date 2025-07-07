@@ -1,0 +1,57 @@
+==> Cloning from https://github.com/edmondlinux/strikercars
+==> Checking out commit 0d708cd2989fd4cd2e52e1099f4c979391bfb905 in branch main
+==> Using Node.js version 22.16.0 (default)
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Using Bun version 1.1.0 (default)
+==> Docs on specifying a Bun version: https://render.com/docs/bun-version
+==> Running build command 'npm run build'...
+> e-commerce-store@1.0.0 build
+> npm install && npm install --prefix frontend && npm run build --prefix frontend
+added 148 packages, and audited 149 packages in 2s
+19 packages are looking for funding
+  run `npm fund` for details
+9 vulnerabilities (5 low, 3 high, 1 critical)
+To address all issues, run:
+  npm audit fix
+Run `npm audit` for details.
+added 409 packages, and audited 410 packages in 4s
+126 packages are looking for funding
+  run `npm fund` for details
+9 vulnerabilities (1 low, 5 moderate, 3 high)
+To address all issues, run:
+  npm audit fix
+Run `npm audit` for details.
+> frontend@0.0.0 build
+> vite build
+vite v5.4.2 building for production...
+transforming...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 2874 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                    12.64 kB │ gzip:   3.13 kB
+dist/assets/index-DKkhaN8q.css     42.16 kB │ gzip:   7.13 kB
+dist/assets/index-DWoEzPBS.js   1,258.85 kB │ gzip: 332.94 kB
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.67s
+==> Uploading build...
+==> Uploaded in 4.0s. Compression took 2.4s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'npm run start'
+> e-commerce-store@1.0.0 start
+> node backend/server.js
+Server is running on http://localhost:5000
+MongoDB connected: ac-o0nddxf-shard-00-00.eqlorao.mongodb.net
+==> Your service is live 🎉
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://strikerauto.onrender.com
+==> 
+==> ///////////////////////////////////////////////////////////
