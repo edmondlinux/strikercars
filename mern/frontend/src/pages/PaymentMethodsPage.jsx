@@ -324,7 +324,7 @@ const PaymentMethodsPage = () => {
 								Call +1 (281) 628-1854
 							</a>
 							<a
-								href="mailto:payments@strikersauto.com"
+								href="mailto:payments@strikersauto.shop"
 								className="inline-flex items-center bg-gray-600 hover:bg-gray-500 text-white px-6 py-3 rounded-md transition-colors"
 							>
 								Email Payment Team
