@@ -43,7 +43,7 @@ const CallToAction = () => {
 							<div className='flex flex-col items-center'>
 								<Phone className='mb-4' size={32} />
 								<h3 className='font-semibold mb-2'>Call Us Now</h3>
-								<p className='text-red-100'>{process.env.REACT_APP_DEALER_PHONE || "(555) 123-4567"}</p>
+								<p className='text-red-100'>{import.meta.env.VITE_DEALER_PHONE || "(555) 123-4567"}</p>
 							</div>
 							<div className='flex flex-col items-center'>
 								<MessageCircle className='mb-4' size={32} />

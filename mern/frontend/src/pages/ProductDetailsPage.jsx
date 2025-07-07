@@ -45,7 +45,7 @@ const ProductDetailsPage = () => {
 	};
 
 	const handleCallDealer = () => {
-		const dealerPhone = process.env.REACT_APP_DEALER_PHONE || "(555) 123-4567";
+		const dealerPhone = import.meta.env.VITE_DEALER_PHONE || "(555) 123-4567";
 		window.open(`tel:${dealerPhone}`, '_self');
 	};
 
