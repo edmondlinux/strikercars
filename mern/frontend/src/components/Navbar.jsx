@@ -82,14 +82,14 @@ const Navbar = () => {
 						</Link>
 						
 						<Link
-							to="/payment-methods"
+							to="/payment"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium"
 						>
 							Payments
 						</Link>
 
 						<Link
-							to="/contact-info"
+							to="/contact"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium"
 						>
 							Contact
@@ -157,7 +157,7 @@ const Navbar = () => {
 							Inventory
 						</Link>
 						<Link
-							to="/payment-methods"
+							to="/payment"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium py-2"
 							onClick={closeMenu}
 						>
@@ -165,7 +165,7 @@ const Navbar = () => {
 						</Link>
 
 						<Link
-							to="/contact-info"
+							to="/contact"
 							className="text-gray-300 hover:text-red-400 transition duration-300 font-medium py-2"
 							onClick={closeMenu}
 						>

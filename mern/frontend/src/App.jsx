@@ -65,8 +65,8 @@ function App() {
 						<Route path='/purchase-cancel' element={user ? <PurchaseCancelPage /> : <Navigate to='/login' />} />
 						<Route path='/contact' element={<ContactPage />} />
 						<Route path='/contact/:productId' element={<ContactPage />} />
-						<Route path="/contact-info" element={<ContactInfoPage />} />
-						<Route path="/payment-methods" element={<PaymentMethodsPage />} />
+						<Route path="/contact" element={<ContactInfoPage />} />
+						<Route path="/payment" element={<PaymentMethodsPage />} />
 					</Routes>
 				</main>
 
