@@ -42,19 +42,18 @@ const CallToAction = () => {
 
 						<div className='grid grid-cols-1 md:grid-cols-3 gap-8 text-white'>
 							<div className='flex flex-col items-center'>
-								<Phone className='mb-4' size={32} />
-								<h3 className='font-semibold mb-2'>Call Us Now</h3>
-								<p className='text-red-100'>+1 (281) 628-1854</p>
+								<MessageCircle className='mb-4' size={32} />
+								<h3 className='font-semibold mb-2'>Telegram</h3>
+							<Link to="https://t.me/yourz_bans">
+								<p className='text-red-100'>@yourz_bans</p> </Link>
 							</div>
 							<div className='flex flex-col items-center'>
-								<MessageCircle className='mb-4' size={32} />
-								<h3 className='font-semibold mb-2'>Text Us</h3>
-								<p className='text-red-100'>+1 (281) 628-1854</p>
+							
 							</div>
 							<div className='flex flex-col items-center'>
 								<MapPin className='mb-4' size={32} />
 								<h3 className='font-semibold mb-2'>Visit Our Lot</h3>
-								<p className='text-red-100'>123 Auto Street</p>
+								<p className='text-red-100'>Florida</p>
 							</div>
 						</div>
 					</div>

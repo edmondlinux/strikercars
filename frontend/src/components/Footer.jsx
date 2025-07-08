@@ -18,8 +18,7 @@ const Footer = () => {
 							</div>
 						</div>
 						<p className='text-gray-400 leading-relaxed'>
-							Your trusted partner for quality pre-owned vehicles. We specialize in helping customers 
-							with all credit situations find reliable transportation.
+							Your go to crew for solid whips. We hook you up with clean rides, no matter your credit game.
 						</p>
 						<div className='flex space-x-4'>
 							<a href="#" className='text-gray-400 hover:text-red-500 transition-colors'>
@@ -37,7 +36,7 @@ const Footer = () => {
 						</div>
 					</div>
 
-					{/* Quick links */}
+					{/* Quick links 
 					<div>
 						<h3 className='text-lg font-semibold text-white mb-6'>Quick Links</h3>
 						<ul className='space-y-4'>
@@ -48,9 +47,9 @@ const Footer = () => {
 							<li><Link to="/about" className='text-gray-400 hover:text-red-500 transition-colors'>About Us</Link></li>
 							<li><Link to="/testimonials" className='text-gray-400 hover:text-red-500 transition-colors'>Customer Reviews</Link></li>
 						</ul>
-					</div>
+					</div> */}
 
-					{/* Services */}
+					{/* Services 
 					<div>
 						<h3 className='text-lg font-semibold text-white mb-6'>Our Services</h3>
 						<ul className='space-y-4'>
@@ -62,6 +61,7 @@ const Footer = () => {
 							<li><span className='text-gray-400'>Insurance Assistance</span></li>
 						</ul>
 					</div>
+				*/}
 
 					{/* Contact info */}
 					<div>

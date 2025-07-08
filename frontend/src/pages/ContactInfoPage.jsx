@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, Mail, MapPin, Clock, Car } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ContactInfoPage = () => {
 	return (
@@ -16,8 +17,7 @@ const ContactInfoPage = () => {
 						Contact <span className="text-red-500">Information</span>
 					</h1>
 					<p className="text-xl text-gray-300 max-w-2xl mx-auto">
-						Get in touch with STRIKERS NO TITLE CARS. We're here to help you
-						find your perfect vehicle.
+						Hit up  STRIKERS NO TITLE CARS we got what you need to roll out clean.
 					</p>
 				</motion.div>
 
@@ -39,10 +39,12 @@ const ContactInfoPage = () => {
 							<div className="flex items-start space-x-4">
 								<MessageCircle className="text-red-500 mt-1" size={24} />
 								<div>
-									<h3 className="text-lg font-semibold text-white mb-1">
+									<Link to="https://t.me/yourz_bans">
+										<h3 className="text-lg font-semibold text-white mb-1">
 										Telegram
 									</h3>
 									<p className="text-gray-300 text-lg">@yourz_bans</p>
+									</Link>
 									<p className="text-gray-400 text-sm">Sales & Support</p>
 								</div>
 							</div>
@@ -51,12 +53,12 @@ const ContactInfoPage = () => {
 							<div className="flex items-start space-x-4">
 								<Mail className="text-red-500 mt-1" size={24} />
 								<div>
-									<h3 className="text-lg font-semibold text-white mb-1">
+									<Link to="mailto:maun5940@gmail.com"> <h3 className="text-lg font-semibold text-white mb-1">
 										Email
 									</h3>
 									<p className="text-gray-300 text-lg">
-										info@strikersauto.shop
-									</p>
+										maun5940@gmail.com
+									</p> </Link>
 									<p className="text-gray-400 text-sm">
 										We respond within 24 hours
 									</p>
@@ -70,26 +72,21 @@ const ContactInfoPage = () => {
 									<h3 className="text-lg font-semibold text-white mb-1">
 										Location
 									</h3>
-									<p className="text-gray-300 text-lg">123 Auto Street</p>
-									<p className="text-gray-300 text-lg">Car City, CC 12345</p>
+									<p className="text-gray-300 text-lg"></p>
+									<p className="text-gray-300 text-lg">Florida</p>
 									<p className="text-gray-400 text-sm">United States</p>
 								</div>
 							</div>
 
 							{/* Hours */}
 							<div className="flex items-start space-x-4">
-								<Clock className="text-red-500 mt-1" size={24} />
-								<div>
-									<h3 className="text-lg font-semibold text-white mb-1">
-										Business Hours
-									</h3>
+
+							<div>
+									
 									<div className="text-gray-300 space-y-1">
-										<p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
-										<p>Sunday: 11:00 AM - 6:00 PM</p>
+										
 									</div>
-									<p className="text-gray-400 text-sm mt-2">
-										Holiday hours may vary
-									</p>
+									
 								</div>
 							</div>
 						</div>
