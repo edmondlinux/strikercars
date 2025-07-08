@@ -19,10 +19,9 @@ import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./stores/useUserStore";
 import { useEffect } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
-import CartPage from "./pages/CartPage";
-import OrdersPage from "./pages/OrdersPage";
 import { useCartStore } from "./stores/useCartStore";
 import PWAInstallPrompt from "./components/PWAInstallPrompt";
+import FloatingTelegramButton from "./components/FloatingTelegramButton";
 
 function App() {
 	const { user, checkAuth, checkingAuth } = useUserStore();
@@ -90,6 +89,7 @@ function App() {
 
 			<Toaster />
 			<PWAInstallPrompt />
+			<FloatingTelegramButton />
 		</div>
 	);
 }
