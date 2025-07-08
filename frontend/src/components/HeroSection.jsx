@@ -7,7 +7,7 @@ import {
 	Shield,
 	Clock,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
@@ -17,6 +17,8 @@ const HeroSection = () => {
 	const [isDeleting, setIsDeleting] = useState(false);
 	const [isWaiting, setIsWaiting] = useState(false);
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+	const [isInView, setIsInView] = useState(false);
+	const sectionRef = useRef(null);
 
 	const lines = [
 		{ text: "Premium whips", color: "text-white" },
@@ -33,7 +35,40 @@ const HeroSection = () => {
 		return () => window.removeEventListener("mousemove", handleMouseMove);
 	}, []);
 
+	// Intersection Observer to detect when component is in view
 	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				setIsInView(entry.isIntersecting);
+				// Reset animation when coming back into view
+				if (entry.isIntersecting && displayText === "") {
+					setCurrentLineIndex(0);
+					setCurrentCharIndex(0);
+					setIsDeleting(false);
+					setIsWaiting(false);
+				}
+			},
+			{
+				threshold: 0.3, // Trigger when 30% of the component is visible
+				rootMargin: "0px 0px -50px 0px" // Add some margin to prevent early triggering
+			}
+		);
+
+		if (sectionRef.current) {
+			observer.observe(sectionRef.current);
+		}
+
+		return () => {
+			if (sectionRef.current) {
+				observer.unobserve(sectionRef.current);
+			}
+		};
+	}, [displayText]);
+
+	useEffect(() => {
+		// Only run the typing animation if the component is in view
+		if (!isInView) return;
+
 		const timeout = setTimeout(
 			() => {
 				if (isWaiting) {
@@ -71,7 +106,7 @@ const HeroSection = () => {
 		);
 
 		return () => clearTimeout(timeout);
-	}, [currentCharIndex, currentLineIndex, isDeleting, isWaiting, displayText]);
+	}, [currentCharIndex, currentLineIndex, isDeleting, isWaiting, displayText, isInView]);
 
 	const getColoredText = () => {
 		const text = displayText;
@@ -114,7 +149,10 @@ const HeroSection = () => {
 	);
 
 	return (
-		<section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-x-hidden min-h-screen">
+		<section 
+			ref={sectionRef}
+			className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-x-hidden min-h-screen"
+		>
 			{/* Animated Background */}
 			<div className="absolute inset-0 overflow-hidden">
 				<div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-red-900 opacity-50"></div>
@@ -165,7 +203,7 @@ const HeroSection = () => {
 				<div className="grid lg:grid-cols-2 gap-12 items-center">
 					<div className="space-y-8">
 						<div>
-							<h1 className="text-5xl lg:text-8xl font-bold leading-tight min-h-[200px] flex items-center overflow-hidden">
+							<h1 className="text-5xl lg:text-8xl font-bold leading-tight h-[200px] flex items-center overflow-hidden">
 								<span className="flex flex-wrap break-words max-w-full">
 									{getColoredText()}
 									<span className="animate-pulse text-red-500 ml-1 filter drop-shadow-lg">
