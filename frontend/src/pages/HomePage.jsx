@@ -2,7 +2,7 @@
 import HeroSection from "../components/HeroSection";
 import CarCategories from "../components/CarCategories";
 import FeaturedCars from "../components/FeaturedCars";
-
+import Reviews from "../components/Reviews";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
 
@@ -20,7 +20,7 @@ const HomePage = () => {
 				<HeroSection />
 				<CarCategories />
 				<FeaturedCars />
-				
+				<Reviews />
 				<Testimonials />
 				<CallToAction />
 			</div>
