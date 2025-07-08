@@ -31,17 +31,14 @@ const Navbar = () => {
 				{/* Top bar with contact info */}
 				<div className="hidden md:flex justify-between items-center text-sm text-gray-300 pb-2 border-b border-gray-700">
 					<div className="flex items-center space-x-6">
-						<div className="flex items-center space-x-2">
-							<Phone size={14} />
-							<span>+1 (281) 628-1854</span>
-						</div>
+						
 						<div className="flex items-center space-x-2">
 							<MapPin size={14} />
 							<span></span>
 						</div>
 					</div>
 					<div className="text-red-400 font-medium">
-						Open Mon-Sat 9AM-8PM, Sun 11AM-6PM
+						we've got what you need to get back on the road 
 					</div>
 				</div>
 
