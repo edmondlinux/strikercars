@@ -98,14 +98,18 @@ const CarCard = memo(({ product }) => {
 
 				{/* Car details */}
 				<div className="flex items-center space-x-4 mb-4 text-gray-300">
-					<div className="flex items-center space-x-1">
-						<Calendar size={16} />
-						<span className="text-sm">2020</span>
-					</div>
-					<div className="flex items-center space-x-1">
-						<Gauge size={16} />
-						<span className="text-sm">45K miles</span>
-					</div>
+					{product.year && (
+						<div className="flex items-center space-x-1">
+							<Calendar size={16} />
+							<span className="text-sm">{product.year}</span>
+						</div>
+					)}
+					{product.mileage && (
+						<div className="flex items-center space-x-1">
+							<Gauge size={16} />
+							<span className="text-sm">{product.mileage}</span>
+						</div>
+					)}
 				</div>
 
 				<p className="text-gray-400 text-sm mb-4 line-clamp-2">
