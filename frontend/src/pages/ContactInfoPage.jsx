@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Telegram, Mail, MapPin, Clock, Car } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin, Clock, Car } from "lucide-react";
 
 const ContactInfoPage = () => {
 	return (
@@ -37,7 +37,7 @@ const ContactInfoPage = () => {
 						<div className="space-y-6">
 							{/* Phone */}
 							<div className="flex items-start space-x-4">
-								<Chat className="text-red-500 mt-1" size={24} />
+								<MessageCircle className="text-red-500 mt-1" size={24} />
 								<div>
 									<h3 className="text-lg font-semibold text-white mb-1">
 										Telegram
