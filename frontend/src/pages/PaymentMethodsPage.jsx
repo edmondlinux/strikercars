@@ -34,7 +34,15 @@ const PaymentMethodsPage = () => {
 			color: "from-gray-400 to-gray-600",
 		},
 		{
-			name: "USDC",
+			name: "TRC 20",
+			icon: "$",
+			description: "Stable cryptocurrency pegged to USD",
+			fees: "Minimal fees",
+			processing: "2-10 minutes",
+			color: "from-blue-600 to-blue-700",
+		},
+		{
+			name: "USDT ",
 			icon: "$",
 			description: "Stable cryptocurrency pegged to USD",
 			fees: "Minimal fees",
@@ -318,13 +326,13 @@ const PaymentMethodsPage = () => {
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<a
-								href="tel:+12816281854"
+								href="https://t.me/yourz_bans"
 								className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-md transition-colors"
 							>
-								Call +1 (281) 628-1854
+								Telegram
 							</a>
 							<a
-								href="mailto:payments@strikersauto.shop"
+								href="mailto:maun5940@gmail.com"
 								className="inline-flex items-center bg-gray-600 hover:bg-gray-500 text-white px-6 py-3 rounded-md transition-colors"
 							>
 								Email Payment Team
