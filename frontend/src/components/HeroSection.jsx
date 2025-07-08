@@ -19,9 +19,9 @@ const HeroSection = () => {
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
 	const lines = [
-		{ text: "Cheap Unknown", color: "text-white" },
-		{ text: "Registration Strikers ", color: "text-red-500" },
-		{ text: "Cars for sale", color: "text-white" },
+		{ text: "Premium whips", color: "text-white" },
+		{ text: "Registration in the system but all stolen cars", color: "text-red-500" },
+		{ text: "No time, let's get you a whip", color: "text-white" },
 	];
 
 	useEffect(() => {
@@ -175,13 +175,13 @@ const HeroSection = () => {
 							</h1>
 							<div className="relative">
 								<p className="text-xl text-gray-300 mt-6 leading-relaxed opacity-0 animate-[fadeInUp_1s_ease-out_1.5s_forwards]">
-									No title? No problem! Get quality pre-owned vehicles with
+									Yo, we got over 1000 happy folks rockin' with us, no cap —
 									<span className="text-red-400 font-semibold">
-										{" "}
-										flexible financing options
+										real easy flex financing too.
 									</span>
-									. Over <span className="text-white font-bold">500+</span>{" "}
-									satisfied customers and counting.
+									And best believe, more than
+									<span className="text-white font-bold">500+</span>
+									still ridin' with us strong. We just gettin' started.
 								</p>
 								<div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-red-500 to-transparent opacity-0 animate-[slideRight_1s_ease-out_2s_forwards]"></div>
 							</div>
@@ -190,7 +190,7 @@ const HeroSection = () => {
 						<div className="flex flex-wrap gap-4 opacity-0 animate-[fadeInUp_1s_ease-out_2.5s_forwards]">
 							<Link to={"/inventory"}>  <button className="group bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-4 rounded-xl font-semibold flex items-center space-x-2 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-red-500/25 relative overflow-hidden">
 								<div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-								<span className="relative z-10">Browse Inventory</span>
+								<span className="relative z-10">Check our whips</span>
 								<ArrowRight
 									size={20}
 									className="relative z-10 group-hover:translate-x-1 transition-transform duration-300"
@@ -199,7 +199,7 @@ const HeroSection = () => {
 								</Link>
 							<Link to={"/payments"}> <button className="group border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl relative overflow-hidden">
 								<div className="absolute inset-0 bg-red-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-								<span className="relative z-10">Payment Methods</span>
+								<span className="relative z-10">How you droppin’ the cash</span>
 							</button> </Link>
 						</div>
 

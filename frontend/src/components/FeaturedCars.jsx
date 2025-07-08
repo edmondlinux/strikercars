@@ -75,11 +75,10 @@ const FeaturedCars = () => {
 					className="text-center mb-16"
 				>
 					<h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-						Featured <span className="text-red-500">Vehicles</span>
+						Hottest <span className="text-red-500">Rides</span> on the Block
 					</h2>
 					<p className="text-xl text-gray-300 max-w-3xl mx-auto">
-						Handpicked quality vehicles with the best value. Browse our full
-						inventory to explore more options!
+						Only the realest, handpicked whips — top-tier value, no BS. Roll through the full lineup to see what else we got cookin’.
 					</p>
 				</motion.div>
 
@@ -173,7 +172,7 @@ const FeaturedCars = () => {
 						to="/inventory"
 						className="inline-flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition duration-300 transform hover:scale-105"
 					>
-						<span>Browse Full Inventory</span>
+						<span>Tap in to see the whips</span>
 						<ArrowRight size={20} />
 					</Link>
 				</motion.div>
