@@ -17,7 +17,7 @@ const ProductDetailsPage = () => {
 	const [loading, setLoading] = useState(true);
 	const [emailSent, setEmailSent] = useState(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-	const { products } = useProductStore();
+	const { products, fetchProductById } = useProductStore();
 	const { addToFavorites } = useFavoriteStore();
 	const { addToCart } = useCartStore();
 	const { user } = useUserStore();
@@ -75,73 +75,91 @@ const ProductDetailsPage = () => {
 	}, [product]);
 
 	useEffect(() => {
-		// First check in the regular products
-		const foundProduct = products.find(p => p._id === id);
-		if (foundProduct) {
-			setProduct(foundProduct);
-			setLoading(false);
-			setSelectedImageIndex(0); // Reset image selection
-			return;
-		}
-
-		// Check if it's a featured car (static data)
-		const featuredCars = [
-			{
-				_id: "featured-car-honda-civic-2020",
-				name: "2020 Honda Civic LX",
-				description: "Reliable and fuel-efficient sedan perfect for daily commuting. Clean title, well-maintained with complete service history. Features include automatic transmission, power windows, air conditioning, and excellent safety ratings.",
-				price: 18500,
-				image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-				year: 2020,
-				mileage: "45,000",
-				category: "sedan",
-				engine: "1.5L 4-Cylinder",
-				seats: "5",
-				transmission: "CVT Automatic",
-				fuelType: "Gasoline",
-				mpg: "32 City / 42 Highway"
-			},
-			{
-				_id: "featured-car-ford-explorer-2019",
-				name: "2019 Ford Explorer XLT",
-				description: "Spacious SUV with 3-row seating perfect for families. Equipped with advanced safety features, entertainment system, and plenty of cargo space. One owner vehicle with excellent maintenance records.",
-				price: 24900,
-				image: "https://images.unsplash.com/photo-1566473965997-3de9c817e938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-				year: 2019,
-				mileage: "52,000",
-				category: "suv",
-				engine: "3.5L V6",
-				seats: "7",
-				transmission: "10-Speed Automatic",
-				fuelType: "Gasoline",
-				mpg: "20 City / 28 Highway"
-			},
-			{
-				_id: "featured-car-toyota-camry-2021",
-				name: "2021 Toyota Camry LE",
-				description: "Low mileage sedan with excellent fuel economy and Toyota's renowned reliability. Pristine interior and exterior condition with advanced safety features and modern infotainment system.",
-				price: 22750,
-				image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
-				year: 2021,
-				mileage: "28,000",
-				category: "sedan",
-				engine: "2.5L 4-Cylinder",
-				seats: "5",
-				transmission: "8-Speed Automatic",
-				fuelType: "Gasoline",
-				mpg: "28 City / 39 Highway"
+		const loadProduct = async () => {
+			setLoading(true);
+			
+			// First check in the existing products store
+			const foundProduct = products.find(p => p._id === id);
+			if (foundProduct) {
+				setProduct(foundProduct);
+				setLoading(false);
+				setSelectedImageIndex(0);
+				return;
 			}
-		];
 
-		const featuredCar = featuredCars.find(car => car._id === id);
-		if (featuredCar) {
-			setProduct(featuredCar);
-			setLoading(false);
-			setSelectedImageIndex(0); // Reset image selection
-		} else {
-			setLoading(false);
-		}
-	}, [id, products]);
+			// Check if it's a featured car (static data)
+			const featuredCars = [
+				{
+					_id: "featured-car-honda-civic-2020",
+					name: "2020 Honda Civic LX",
+					description: "Reliable and fuel-efficient sedan perfect for daily commuting. Clean title, well-maintained with complete service history. Features include automatic transmission, power windows, air conditioning, and excellent safety ratings.",
+					price: 18500,
+					image: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+					year: 2020,
+					mileage: "45,000",
+					category: "sedan",
+					engine: "1.5L 4-Cylinder",
+					seats: "5",
+					transmission: "CVT Automatic",
+					fuelType: "Gasoline",
+					mpg: "32 City / 42 Highway"
+				},
+				{
+					_id: "featured-car-ford-explorer-2019",
+					name: "2019 Ford Explorer XLT",
+					description: "Spacious SUV with 3-row seating perfect for families. Equipped with advanced safety features, entertainment system, and plenty of cargo space. One owner vehicle with excellent maintenance records.",
+					price: 24900,
+					image: "https://images.unsplash.com/photo-1566473965997-3de9c817e938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+					year: 2019,
+					mileage: "52,000",
+					category: "suv",
+					engine: "3.5L V6",
+					seats: "7",
+					transmission: "10-Speed Automatic",
+					fuelType: "Gasoline",
+					mpg: "20 City / 28 Highway"
+				},
+				{
+					_id: "featured-car-toyota-camry-2021",
+					name: "2021 Toyota Camry LE",
+					description: "Low mileage sedan with excellent fuel economy and Toyota's renowned reliability. Pristine interior and exterior condition with advanced safety features and modern infotainment system.",
+					price: 22750,
+					image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+					year: 2021,
+					mileage: "28,000",
+					category: "sedan",
+					engine: "2.5L 4-Cylinder",
+					seats: "5",
+					transmission: "8-Speed Automatic",
+					fuelType: "Gasoline",
+					mpg: "28 City / 39 Highway"
+				}
+			];
+
+			const featuredCar = featuredCars.find(car => car._id === id);
+			if (featuredCar) {
+				setProduct(featuredCar);
+				setLoading(false);
+				setSelectedImageIndex(0);
+				return;
+			}
+
+			// If not found in store or featured cars, fetch from backend
+			try {
+				const fetchedProduct = await fetchProductById(id);
+				if (fetchedProduct) {
+					setProduct(fetchedProduct);
+					setSelectedImageIndex(0);
+				}
+			} catch (error) {
+				console.error("Error fetching product:", error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		loadProduct();
+	}, [id, products, fetchProductById]);
 
 	if (loading) return <LoadingSpinner />;
 
