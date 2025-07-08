@@ -4,68 +4,68 @@ import { Star, Quote } from "lucide-react";
 
 const reviews = [
 	{
-		name: "Big Mike",
+		name: "StreetKing92",
 		location: "Brooklyn, NY",
 		rating: 5,
 		text: "Yo, these cats at STRIKERS hooked me up PROPER. Credit was more busted than my old whip, but they made it happen. Got my ride same day, no cap!",
 		vehicle: "2020 Dodge Charger",
-		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=StreetKing92"
 	},
 	{
-		name: "Lil Tony",
+		name: "RideOrDie23",
 		location: "Chicago, IL",
 		rating: 5,
 		text: "Real talk, I was skeptical at first but these dudes came through CLUTCH. No BS, no games, just straight business. My whip is clean as hell!",
 		vehicle: "2019 BMW 3 Series",
-		image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=RideOrDie23"
 	},
 	{
-		name: "Mama Rosa",
+		name: "MamaWheels",
 		location: "Miami, FL",
 		rating: 5,
 		text: "Listen mijo, I needed a car FAST and these boys delivered. No paperwork headaches, just results. My familia is rolling in style now!",
 		vehicle: "2021 Honda Accord",
-		image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=MamaWheels"
 	},
 	{
-		name: "Smooth Eddie",
+		name: "CruiseControl88",
 		location: "Detroit, MI",
 		rating: 5,
 		text: "Bruh, I was down BAD with my credit score but STRIKERS didn't even trip. Got approved in like 20 minutes, now I'm cruising like a BOSS!",
 		vehicle: "2018 Mustang GT",
-		image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=CruiseControl88"
 	},
 	{
-		name: "Street Princess",
+		name: "LuxuryLady",
 		location: "Atlanta, GA",
 		rating: 5,
 		text: "Honey, these men know how to HANDLE business! I walked in broke, walked out with KEYS. Now I'm pulling up looking like money!",
 		vehicle: "2020 Lexus ES",
-		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=LuxuryLady"
 	},
 	{
-		name: "Bulletproof Joe",
+		name: "BigWheels101",
 		location: "Las Vegas, NV",
 		rating: 5,
 		text: "These cats are LEGIT. I've dealt with a lot of dealers and most are straight clowns. But STRIKERS? They're about that ACTION, baby!",
 		vehicle: "2019 Cadillac Escalade",
-		image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=BigWheels101"
 	},
 	{
-		name: "Diamond D",
+		name: "RollingDeep",
 		location: "New Orleans, LA",
 		rating: 5,
 		text: "Listen up, I been in the game a LONG time and these boys know how to move. No title? No problem! They got the JUICE to make it happen!",
 		vehicle: "2021 Mercedes C-Class",
-		image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=RollingDeep"
 	},
 	{
-		name: "Big Boss Tony",
+		name: "WheelzNDeals",
 		location: "Philadelphia, PA",
 		rating: 5,
 		text: "Yo, I don't write reviews but these dudes EARNED it. Professional, fast, and they don't judge. Got my whole crew riding clean now!",
 		vehicle: "2020 Audi A4",
-		image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=WheelzNDeals"
 	}
 ];
 
