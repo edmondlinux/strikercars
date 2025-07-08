@@ -4,36 +4,36 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
 	{
-		name: "Sarah Johnson",
+		name: "TexasRider89",
 		location: "Austin, TX",
 		rating: 5,
 		text: "Strikers helped me get a reliable car when my credit wasn't perfect. The team was understanding and worked with my budget. Highly recommend!",
 		vehicle: "2019 Honda Accord",
-		image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=TexasRider89"
 	},
 	{
-		name: "Mike Rodriguez",
+		name: "TruckMaster",
 		location: "Dallas, TX",
 		rating: 5,
 		text: "Fast approval process and transparent pricing. Got my truck the same day I applied. No hidden fees, exactly as promised.",
 		vehicle: "2020 Ford F-150",
-		image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=TruckMaster"
 	},
 	{
-		name: "Jennifer Davis",
+		name: "SafeDriver_TX",
 		location: "Houston, TX",
 		rating: 5,
 		text: "The staff was incredibly helpful and patient. They explained all my options clearly and made sure I understood everything before signing.",
 		vehicle: "2018 Toyota Camry",
-		image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=SafeDriver_TX"
 	},
 	{
-		name: "Robert Chen",
+		name: "QualityFirst",
 		location: "San Antonio, TX",
 		rating: 5,
 		text: "Quality vehicles at fair prices. My car has been running perfectly for over a year now. Great experience from start to finish.",
 		vehicle: "2019 Nissan Altima",
-		image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+		image: "https://api.dicebear.com/7.x/avataaars/svg?seed=QualityFirst"
 	}
 ];
 
