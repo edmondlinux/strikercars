@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mail, Phone, User, MessageSquare, Car } from "lucide-react";
+import { ArrowLeft, Mail, Phone, User, MessageSquare, Car , MessageCircle} from "lucide-react";
+import { Link } from "react-router-dom"
 import toast from "react-hot-toast";
 import axios from "../lib/axios";
 import { useProductStore } from "../stores/useProductStore";
@@ -166,12 +167,17 @@ const ContactPage = () => {
 							</h3>
 							<div className="space-y-3">
 								<div className="flex items-center space-x-3">
-									<Phone className="text-red-500" size={18} />
-									<div>
-										<p className="text-white font-medium">+1 (281) 628-1854</p>
-										<p className="text-gray-400 text-sm">Sales & Support</p>
-									</div>
+									
 								</div>
+								<Link to="https://t.me/yourz_bans"> <div className="flex items-center space-x-3">
+									 <MessageCircle className="text-red-500" size={18} />
+									<div>
+										<p className="text-white font-medium">
+											@yourz_bans
+										</p>
+										<p className="text-gray-400 text-sm">Telegram us</p>
+									</div> 
+								</div> </Link>
 								<div className="flex items-center space-x-3">
 									<Mail className="text-red-500" size={18} />
 									<div>
