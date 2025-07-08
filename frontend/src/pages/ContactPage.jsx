@@ -176,7 +176,7 @@ const ContactPage = () => {
 									<Mail className="text-red-500" size={18} />
 									<div>
 										<p className="text-white font-medium">
-											info@strikersauto.shop
+									maun5940@gmail.com
 										</p>
 										<p className="text-gray-400 text-sm">Email Us</p>
 									</div>

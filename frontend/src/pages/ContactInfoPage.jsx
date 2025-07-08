@@ -129,7 +129,7 @@ const ContactInfoPage = () => {
 	
 								</p>
 								<a
-									href="mailto:info@strikersauto.shop"
+									href="mailto:maun5940@gmail.com"
 									className="inline-flex items-center bg-gray-600 hover:bg-gray-500 text-white px-6 py-3 rounded-md transition-colors"
 								>
 									<Mail className="mr-2" size={18} />

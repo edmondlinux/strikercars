@@ -67,34 +67,24 @@ const Footer = () => {
 					<div>
 						<h3 className='text-lg font-semibold text-white mb-6'>Contact Info</h3>
 						<div className='space-y-4'>
-							<div className='flex items-center space-x-3'>
-								<Phone className='text-red-500' size={20} />
+							
+								
 								<div>
-									<p className='text-white font-medium'>+1 (281) 628-1854</p>
-									<p className='text-gray-400 text-sm'>Sales & Support</p>
-								</div>
+						
+									
+								
 							</div>
 							<div className='flex items-center space-x-3'>
 								<Mail className='text-red-500' size={20} />
 								<div>
-									<p className='text-white font-medium'>info@strikersauto.shop</p>
+									<p className='text-white font-medium'>maun5940@gmail.com</p>
 									<p className='text-gray-400 text-sm'>Email Us</p>
 								</div>
 							</div>
 							<div className='flex items-center space-x-3'>
-								<MapPin className='text-red-500' size={20} />
-								<div>
-									<p className='text-white font-medium'>123 Auto Street</p>
-									<p className='text-gray-400 text-sm'>Car City, CC 12345</p>
-								</div>
+											
 							</div>
-							<div className='flex items-center space-x-3'>
-								<Clock className='text-red-500' size={20} />
-								<div>
-									<p className='text-white font-medium'>Mon-Sat: 9AM-8PM</p>
-									<p className='text-gray-400 text-sm'>Sunday: 11AM-6PM</p>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>

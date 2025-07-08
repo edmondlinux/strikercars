@@ -31,22 +31,21 @@ const CallToAction = () => {
 								className='bg-white text-red-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold
 								flex items-center justify-center space-x-2 transition duration-300 transform hover:scale-105'
 							>
-								<span>Browse Inventory</span>
+								<span>Here's what we've got</span>
 								<ArrowRight size={20} />
 							</Link>
-							<button className='border-2 border-white text-white hover:bg-white hover:text-red-600 
-								px-8 py-4 rounded-lg font-semibold transition duration-300'>
-								Get Pre-Approved
-							</button>
+							
 						</div>
 
 						<div className='grid grid-cols-1 md:grid-cols-3 gap-8 text-white'>
-							<div className='flex flex-col items-center'>
-								<MessageCircle className='mb-4' size={32} />
+							<Link to="https://t.me/yourz_bans"> <div className='flex flex-col items-center'>
+							<MessageCircle className='mb-4' size={32} />
+								
 								<h3 className='font-semibold mb-2'>Telegram</h3>
-							<Link to="https://t.me/yourz_bans">
-								<p className='text-red-100'>@yourz_bans</p> </Link>
+							
+								<p className='text-red-100'>@yourz_bans</p> 
 							</div>
+							</Link>
 							<div className='flex flex-col items-center'>
 							
 							</div>
