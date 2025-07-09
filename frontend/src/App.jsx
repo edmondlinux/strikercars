@@ -5,6 +5,8 @@ import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
+import CartPage from "./pages/CartPage";
+import OrdersPage from "./pages/OrdersPage";
 import InventoryPage from "./pages/InventoryPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
